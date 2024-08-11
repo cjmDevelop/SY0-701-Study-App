@@ -452,14 +452,43 @@ const quizDataArrays = [
   answer: "AAA-Server: Authentication, Authorization, Accounting; manages user access and tracks user activity.",
 },
 ,{
+  question: "True or False?; Benchmarks is a term in network security which defines a set of best practices to apply to a service?",
+  options: ["True", "False"],
+  answer: "True",
+},{
+  question: "True or False?; Personal mobile devices allowed to operate in a security controlled network poses a primary risk for intellectual property theft.",
+  options: ["False", "True"],
+  answer: "True",
+},{
+  question: "True or False?; A Cold-Site is commonly used for disaster recovery",
+  options: ["True", "False"],
+  answer: "True",
+},
+{
+  question: "Which is correct?",
+  options: ["(RBAC) Role-Based Authentication Control - Manages rights and permissions to a server?"],
+  answer: "(RBAC) Role-Based Access Control - Manages rights and permissions in a operating system?",
+},
+{
+  question: "What is the primary function of Software Defined Networking (SDN)?",
+  options: ["It integrates the control and data planes, making network devices more autonomous and self-configuring.", " It decouples the network's control plane from the data plane, allowing centralized management and more dynamic network configurations."],
+  answer: "It decouples the network's control plane from the data plane, allowing centralized management and more dynamic network configurations.",
+},
+{
+  question: "What does MSP stand for?",
+  options: ["Managed Service Provider", "Managed Security Provider"],
+  answer: "Managed Service Provider",
+}, {
+  question: "What is a MSP?",
+  options: ["A MSP is a third-party company that remotely manages a customer's IT infrastructure, and/or end-user systems."],
+  answer: "A MSP is a local department that internally manages an IT infrastructure, and/or end-user systems.",
+},
+{
   question: "",
   options: [""],
   answer: "",
-},{
-  question: "",
-  options: [""],
-  answer: "",
-},{
+},
+{
   question: "",
   options: [""],
   answer: "",
