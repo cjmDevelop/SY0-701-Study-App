@@ -484,14 +484,59 @@ const quizDataArrays = [
   answer: "A MSP is a local department that internally manages an IT infrastructure, and/or end-user systems.",
 },
 {
-  question: "",
-  options: [""],
-  answer: "",
+  question: "Is a Jump-Server related to network security?",
+  options: ["Yes", "No"],
+  answer: "Yes",
 },
 {
-  question: "",
-  options: [""],
-  answer: "",
+  question: "True or False?; A Jump-Server is a highly secured device used to access secure areas of another network.",
+  options: ["True", "False"],
+  answer: "True",
+},
+{
+  question: "True or False; A HSM (Hardware Security Module) contains backups of cryptographic keys.",
+  options: ["True", "False"],
+  answer: "True",
+},
+{
+  question: "True or False?; NAC (Network Access Control) will deny access to devices that do not meet minimum security requirments.",
+  options: ["False", "True"],
+  answer: "True",
+},
+{
+  question: "True or False?; Business Impact Analysis deals with time sensitive system issues?",
+  options: ["True", "False"],
+  answer: "True",
+},
+{
+  question: "Which is correct?",
+  options: ["SIEM (Security Information and Event Management)", "SIEM (Service Identification and Event Management)" ],
+  answer: "SIEM (Security Information and Event Management)",
+},
+{
+  question: "Which is correct?",
+  options: ["The Offboarding-Process describes the polocies and procedures associated with someone leaving an organization.", "The Offboarding-Process describes the Load-Balacing events during times of high user activity."],
+  answer: "The Offboarding-Process describes the polocies and procedures associated with someone leaving an organization.",
+},
+{
+  question: "True or False?; Due-Care commonly refers to internal activities?",
+  options: ["True", "False"],
+  answer: "True",
+},
+{
+  question: "True or False?; risk Acceptance is a business decision that places the responsibility of security risks on the organization itself.",
+  options: ["True", "False"],
+  answer: "True",
+},
+{
+  question: "Which is correct?",
+  options: ["Transference is when organizations may purchase insurance for network security risks.", "Risk-Avoidance is when organizations may purchase insurance for network security risks."],
+  answer: "Transference is when organizations may purchase insurance for network security risks.",
+},
+{
+  question: "True or False?; Risk-Avoidance is when an organization may completely disconnect from the internet and disable all possible exposures to cyber-attacks.",
+  options: ["False", "True"],
+  answer: "True",
 },
 ];
   
