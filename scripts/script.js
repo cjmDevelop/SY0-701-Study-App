@@ -32,12 +32,12 @@ const quizDataArrays = [
     answer: 'System Availability',
   },
   {
-    question: 'Describes configuring compliance checks without the need for manual interaction...',
+    question: 'Configure compliance checks without the need for manual interaction is possible through..?',
     options: ['Maitenance Window', 'Attestaion and Acknowledgment', 'Automation', 'External Audit'],
     answer: 'Automation',
   },
   {
-    question: 'True or False, configuration of an operating system security policies can prevent actions like utilizing external usb drives?',
+    question: 'Configuration of an operating system security policies can prevent actions like utilizing external usb drives?',
     options: [
       'False',
       'True',
@@ -60,9 +60,9 @@ const quizDataArrays = [
     answer: 'Federation',
   },
   {
-    question: 'Defines a range of time required to recover a system or service.',
-    options: ['MTBF - Mean Time Between Failures', 'MTTR - Mean Time to Repair', 'RTO - Repair Time Objective', 'RPO - Repair Point Objective'],
-    answer: 'RTO - Repair Time Objective',
+    question: 'Maximum acceptable amount of time that a system or service can be down after an incident before causing unacceptable disruption to the business',
+    options: ['MTBF - Mean Time Between Failures', 'MTTR - Mean Time to Repair', 'RTO - Recovery Time Objective', 'RPO - Recovery Point Objective'],
+    answer: 'RTO - Recovery Time Objective',
   },
   {
     question: 'Which is a specific list of tasks documented as required to be completed associated with various internal systems and operations.',
@@ -85,22 +85,22 @@ const quizDataArrays = [
     answer: 'Race Condition',
   },
   {
-    question: 'True or False?; Platform Diversity can help mitigate issues associated with monolithic system architectures?',
+    question: 'Platform Diversity can help mitigate issues associated with monolithic system architectures?',
     options: ['True', 'False'],
     answer: 'True',
   },
   {
-    question: 'True or False?; Key-Escrow is the storing and management of digital keys by a third party?',
+    question: 'Key-Escrow is the storing and management of digital keys by a third party?',
     options: ['True', 'False'],
     answer: 'True',
   },
   {
-    question: 'True or Fals?; Record encryption is used with databases to encrypt only certain columns of data?',
+    question: 'Record encryption is used with databases to encrypt only certain columns of data?',
     options: ['True', 'False'],
     answer: 'True',
   },
   {
-    question: 'When dealing with a currupted database, which is the next best source of the related database information located?',
+    question: 'In the event of a corrupted database, where is the next best source to retrieve the related database information?',
     options: ['Raid data files', 'Off-Site Backups', 'Journaling', 'Replication copies'],
     answer: 'Journaling',
   },
@@ -135,12 +135,12 @@ const quizDataArrays = [
     answer: 'True',
   },
   {
-    question: 'True or False?; DNS Poisoning is a way that hackers can direct client computers to any destination IP address?',
+    question: 'DNS Poisoning is a way that hackers can direct client computers to any destination IP address?',
     options: ['True', 'False'],
     answer: 'True',
   },
   {
-    question: 'True or False?; A Hybrid Cloud model can sometimes contain Network Protection mismatches? ',
+    question: 'A Hybrid Cloud model can sometimes contain Network Protection mismatches? ',
     options: ['True', 'False'],
     answer: 'True',
   },
@@ -150,7 +150,7 @@ const quizDataArrays = [
     answer: 'Replay Attack',
   },
   {
-    question: "True or False?; Jailbreaking replaces the firmware on a device to gain access to features not normally available in an operating system ?",
+    question: "Jailbreaking circumvents firmware on a device to gain access to features not normally available in an operating system ?",
     options: ['True', 'False'],
     answer: 'True',
   },
@@ -160,7 +160,7 @@ const quizDataArrays = [
     answer: 'Tabletop Excercise',
   },
   {
-    question: "True or False?; Data-Masking hides data by substitution, shuffling, encryption, and other methods?",
+    question: "Data-Masking hides data by substitution, shuffling, encryption, and other methods?",
     options: ['False', 'True'],
     answer: 'True',
   },
@@ -172,7 +172,7 @@ const quizDataArrays = [
   },
 
   {
-    question: "True or False?; Spraying is similar to a brute force attack, but spraying limits the number of sign-in attempts?",
+    question: "Spraying is similar to a brute force attack, but spraying limits the number of sign-in attempts?",
     options: ['False', 'True'],
     answer: 'True',
   },
@@ -184,7 +184,7 @@ const quizDataArrays = [
   },
 
   {
-    question: "True or False?; Blockchain technology provides ledger capabilities?",
+    question: "Blockchain technology provides ledger capabilities?",
     options: ['True', 'False'],
     answer: 'True',
   },
@@ -196,13 +196,13 @@ const quizDataArrays = [
   },
 
   {
-    question: "True or False?; A Buffer-Overflow consist of an attackker sending larger then expected payloads of data in an API call for malicious purposes?",
+    question: "A Buffer-Overflow consist of an attackker sending larger then expected payloads of data in an API call for malicious purposes?",
     options: ['False', 'True'],
     answer: 'True',
   },
 
   {
-    question: "True or False?; An On-Path attack is dectable by a host-based firewall?",
+    question: "An On-Path attack is dectable by a host-based firewall?",
     options: ['False', 'True'],
     answer: 'False',
   },
@@ -214,19 +214,19 @@ const quizDataArrays = [
   },
 
   {
-    question: "True or False?; A Security Awareness Campaign often contains end-user reports?",
+    question: "A Security Awareness Campaign often contains end-user reports?",
     options: ['True', 'False'],
     answer: 'True',
   },
 
   {
-    question: "True or False?; An IAC (Infastructure as Code) file defines system architecture in cloud-based systems?",
+    question: "An IAC (Infastructure as Code) file defines system architecture in cloud-based systems?",
     options: ['False', 'True'],
     answer: 'True',
   },
 
   {
-    question: "True or False?; Change-Management is a process that deals with mitigating security issues caused by application changes and upgrades?",
+    question: "Change-Management is a process that deals with mitigating security issues caused by application changes and upgrades?",
     options: ['True', 'False'],
     answer: 'True',
   },
@@ -256,7 +256,7 @@ const quizDataArrays = [
     answer: 'Data-Custodian',
   },
   {
-    question: "True or False?; Classifying data as private can be considered an act of Expanded Privacy Compliance?",
+    question: "Classifying data as private can be considered an act of Expanded Privacy Compliance?",
     options: ['True', 'False'],
     answer: 'True',
   },
@@ -292,13 +292,13 @@ const quizDataArrays = [
   },
 
   {
-    question: "True or False?; Malware that sits dormant until a particular action occurs is called a Logic-Bomb?",
+    question: "Malware that sits dormant until a particular action occurs is called a Logic-Bomb?",
     options: ['True', 'False'],
     answer: 'True',
   },
 
   {
-    question: "True or False?; A Key-Logger attack can sometimes interrupt network traffic?",
+    question: "A Key-Logger attack can sometimes interrupt network traffic?",
     options: ['True', 'False'],
     answer: 'True',
   },
@@ -318,7 +318,7 @@ const quizDataArrays = [
     answer: 'DMARC stands for Domain-based Message Authentication, Reporting and Conformance',
   },
   {
-    question: "True or False?; DKIM (Domain Keys Identified Mail) publishes digital signature keys for all outgoing mail ?",
+    question: "DKIM (Domain Keys Identified Mail) publishes digital signature keys for all outgoing mail ?",
     options: ['False', 'True'],
     answer: 'True',
   },
@@ -333,8 +333,6 @@ const quizDataArrays = [
     answer: "Penetration Test are meant to expose and exploit vulnerabilities in a system, and should operate within a testing enviorment.",
   },
 
-
-
   // //################## TEST [B] ##################################################################
   {
     question: "Which is true?",
@@ -342,7 +340,7 @@ const quizDataArrays = [
     answer: "CRL (Certificate Revocation liST) - A list of invalidated certificates.",
   },
   {
-    question: "True or False?; CA (Certificate Authority) - Deploy and manage certificates.",
+    question: "CA (Certificate Authority) - Deploy and manage certificates.",
     options: ["True", "False"],
     answer: "True",
   },
@@ -352,7 +350,7 @@ const quizDataArrays = [
     answer: "CSR (Certificate Signing Request) - Send the public key to be signed.",
   },
   {
-    question: "True or False?; MDM (Mobile Device Manager), full disk encryptrion and biometric authentication helps protect mobile devices? ",
+    question: "MDM (Mobile Device Manager), full disk encryptrion and biometric authentication helps protect mobile devices? ",
     options: ["True", "False"],
     answer: "True",
   },
@@ -362,17 +360,17 @@ const quizDataArrays = [
     answer: "Preperation, Detection, Analysis, Containment, Eradication, Recovery, Lessons Learned",
   },
   {
-    question: "True or False?; SPF stands for Sender Policy Framework and specializes in email server authentication.",
+    question: "SPF stands for Sender Policy Framework and specializes in email server authentication.",
     options: ["True", "False"],
     answer: "True",
   },
   {
-    question: "True or False?; An 802.1Q trunk is a type of network link that carries traffic for multiple VLANs.",
+    question: "An 802.1Q trunk is a type of network link that carries traffic for multiple VLANs.",
     options: ["True", "False"],
     answer: "True",
   },
   {
-    question: "True or False?; Many applications and services provide Server-Hardening configuration guides.",
+    question: "Many applications and services provide Server-Hardening configuration guides.",
     options: ["False", "True"],
     answer: "True",
   },
@@ -387,17 +385,17 @@ const quizDataArrays = [
     answer: "Passive Reconnaisance",
   },
   {
-    question: "True or False?; A 'Partially Known Enviorment' describes how well an attacker knows a test?",
+    question: "A 'Partially Known Enviorment' describes how well an attacker knows a test?",
     options: ["False", "True"],
     answer: "True",
   },
   {
-    question: "True or False? Exfiltration does not mean theft of data?",
+    question: "Exfiltration does not mean theft of data?",
     options: ["True", "False"],
     answer: "False",
   },
   {
-    question: "True or False?; Typosquatting uses a mispelling of a domain name in order to lure users to a malicious website.",
+    question: "Typosquatting uses a mispelling of a domain name in order to lure users to a malicious website.",
     options: ["False", "True"],
     answer: "True",
   },
@@ -407,18 +405,18 @@ const quizDataArrays = [
     answer: "True",
   },
   {
-    question: "True or False?; SDN stands for Software Defined Networking.",
+    question: "SDN stands for Software Defined Networking.",
     options: ["True", "False"],
     answer: "True",
   },
   {
-    question: "True or False?; An 'Amplified DDoS attack' increase's the volume of traffic to a target by exploiting services that generate large responses.",
+    question: "An 'Amplified DDoS attack' increase's the volume of traffic to a target by exploiting services that generate large responses.",
     options: ["False", "True"],
     answer: "True",
   },
 
   {
-    question: "True or False?; Accounting is a network security term which contains information like: user sessions, login times, file transfers and logout times.",
+    question: "Accounting is a network security term which contains information like: user sessions, login times, file transfers and logout times.",
     options: ["True", "False"],
     answer: "True",
   },
@@ -442,7 +440,7 @@ const quizDataArrays = [
       "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator itself does not contain any user login information due to that data being placed on a central-server, which is also known as an AAA-Server?",
   },
   {
-    question: "True or False?; A Central-Server is also known as a AAA-Server?",
+    question: "A Central-Server is also known as a AAA-Server?",
     options: ["True", "False"],
     answer: "True",
   },
@@ -453,15 +451,15 @@ const quizDataArrays = [
     answer: "AAA-Server: Authentication, Authorization, Accounting; manages user access and tracks user activity.",
   },
   , {
-    question: "True or False?; Benchmarks is a term in network security which defines a set of best practices to apply to a service?",
+    question: "Benchmarks is a term in network security which defines a set of best practices to apply to a service?",
     options: ["True", "False"],
     answer: "True",
   }, {
-    question: "True or False?; Personal mobile devices allowed to operate in a security controlled network poses a primary risk for intellectual property theft.",
+    question: "Personal mobile devices allowed to operate in a security controlled network poses a primary risk for intellectual property theft.",
     options: ["False", "True"],
     answer: "True",
   }, {
-    question: "True or False?; A Cold-Site is commonly used for disaster recovery",
+    question: "A Cold-Site is commonly used for disaster recovery",
     options: ["True", "False"],
     answer: "True",
   },
@@ -490,22 +488,22 @@ const quizDataArrays = [
     answer: "Yes",
   },
   {
-    question: "True or False?; A Jump-Server is a highly secured device used to access secure areas of another network.",
+    question: "A Jump-Server is a highly secured device used to access secure areas of another network.",
     options: ["True", "False"],
     answer: "True",
   },
   {
-    question: "True or False; A HSM (Hardware Security Module) contains backups of cryptographic keys.",
+    question: "A HSM (Hardware Security Module) contains backups of cryptographic keys.",
     options: ["True", "False"],
     answer: "True",
   },
   {
-    question: "True or False?; NAC (Network Access Control) will deny access to devices that do not meet minimum security requirments.",
+    question: "NAC (Network Access Control) will deny access to devices that do not meet minimum security requirments.",
     options: ["False", "True"],
     answer: "True",
   },
   {
-    question: "True or False?; Business Impact Analysis deals with time sensitive system issues?",
+    question: "Business Impact Analysis deals with time sensitive system issues?",
     options: ["True", "False"],
     answer: "True",
   },
@@ -520,12 +518,12 @@ const quizDataArrays = [
     answer: "The Offboarding-Process describes the polocies and procedures associated with someone leaving an organization.",
   },
   {
-    question: "True or False?; Due-Care commonly refers to internal activities?",
+    question: "Due-Care commonly refers to internal activities?",
     options: ["True", "False"],
     answer: "True",
   },
   {
-    question: "True or False?; risk Acceptance is a business decision that places the responsibility of security risks on the organization itself.",
+    question: "Risk Acceptance is a business decision that places the responsibility of security risks on the organization itself.",
     options: ["True", "False"],
     answer: "True",
   },
@@ -535,7 +533,7 @@ const quizDataArrays = [
     answer: "Transference is when organizations may purchase insurance for network security risks.",
   },
   {
-    question: "True or False?; Risk-Avoidance is when an organization may completely disconnect from the internet and disable all possible exposures to cyber-attacks.",
+    question: "Risk-Avoidance is when an organization may completely disconnect from the internet and disable all possible exposures to cyber-attacks.",
     options: ["False", "True"],
     answer: "True",
   },
@@ -718,3 +716,11 @@ retryButton.addEventListener('click', retryQuiz);
 showAnswerButton.addEventListener('click', showAnswer);
 
 displayQuestion();
+
+//-------------------------------------------------------------------------
+
+
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}

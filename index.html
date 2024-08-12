@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>JavaScript Quiz App</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SY0-701 Study-App</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/901275ddb7.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <div class="quiz-container">
-    <h1>SY0-701</h1>
-    <div id="quiz"></div>
-    <div id="result" class="result"></div>
-    <button id="submit" class="button">Submit</button>
-    <button id="retry" class="hide button">Retry</button>
-    <button id="showAnswer" class="hide button">Show Answer</button>
-    <div id="footer">FOOT</div>
-  </div>
-  <script src="script.js"></script>
+
+    <div id="header">
+        <div id="timer">
+            <h3>place-holder</h3>
+        </div>
+        <div>
+            <h1>SY0-701 &bullet; Study App</h1>
+        </div>
+        <div>
+            <button id="day-n-night" onclick="myFunction()"><i class="fa-solid fa-moon fa-2x"></i></button>
+        </div>
+    </div>
+
+    <div class="outer-container">
+        <div id="pic-div">
+            <img src="imgs/Spy_Vs_Spy.webp" alt="Spy_Vs_Spy">
+        </div>
+
+        <div class="quiz-container">
+            <div id="quiz"></div>
+            <div id="result" class="result"></div>
+            <button id="submit" class="button">Submit</button>
+            <button id="retry" class="hide button">Retry</button>
+            <button id="showAnswer" class="hide button">Show Answer</button>
+        </div>
+    </div>
+
+
+
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>
