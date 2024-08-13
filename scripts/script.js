@@ -196,7 +196,7 @@ const quizDataArrays = [
   },
 
   {
-    question: "A Buffer-Overflow consist of an attackker sending larger then expected payloads of data in an API call for malicious purposes?",
+    question: "A Buffer-Overflow consist of an attacker sending larger then expected payloads of data in an API call for malicious purposes?",
     options: ['False', 'True'],
     answer: 'True',
   },
@@ -262,8 +262,8 @@ const quizDataArrays = [
   },
   {
     question: "What does HSM stand for?",
-    options: ['Hashing Security Module', 'Hardware Security Measure'],
-    answer: 'Hardware Security Measure',
+    options: ['Hashing Security Module', 'Hardware Security Module'],
+    answer: 'Hardware Security Module',
   },
   {
     question: "What does ALE stand for?",
@@ -447,10 +447,10 @@ const quizDataArrays = [
   {
     question: "which is correct?",
     options: ["AAA-Server: Authentication, Authorization, Accounting; manages user access and tracks user activity.",
-      "AAA-Server: Authentication, Authorization, Attestation; manages user access and tracks user activity."],
-    answer: "AAA-Server: Authentication, Authorization, Accounting; manages user access and tracks user activity.",
+              "AAA-Server: Authentication, Authorization, Attestation; manages user access and tracks user activity."],
+    answer:   "AAA-Server: Authentication, Authorization, Accounting; manages user access and tracks user activity.",
   },
-  , {
+   {
     question: "Benchmarks is a term in network security which defines a set of best practices to apply to a service?",
     options: ["True", "False"],
     answer: "True",
