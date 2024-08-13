@@ -8,7 +8,7 @@ const quizDataArrays = [
   },
   {
     question: 'Assigning a disposition to unauthorized emails received from external third parties.',
-    options: ['SPF', 'NAC', 'DMARC', 'DKIM'],
+    options: ['SPF (Sender Policy Framework)', 'NAC (Network Access Control)', 'DMARC (Domain-based Message Authentication Reporting and Conformance)', 'DKIM (Domain Keys Identified Mail)'],
     answer: 'DMARC',
   },
   {
@@ -32,7 +32,7 @@ const quizDataArrays = [
     answer: 'System Availability',
   },
   {
-    question: 'Configure compliance checks without the need for manual interaction is possible through..?',
+    question: 'Configure compliance checks without the need for manual interaction is possible by..?',
     options: ['Maitenance Window', 'Attestaion and Acknowledgment', 'Automation', 'External Audit'],
     answer: 'Automation',
   },
@@ -145,7 +145,7 @@ const quizDataArrays = [
     answer: 'True',
   },
   {
-    question: 'Captured information reused to commit cyber attacks..',
+    question: 'Captured information reused to commit cyber attacks..?',
     options: ['SQL Injection', 'Replay Attack'],
     answer: 'Replay Attack',
   },
@@ -336,11 +336,11 @@ const quizDataArrays = [
   // //################## TEST [B] ##################################################################
   {
     question: "Which is true?",
-    options: ["CRL (Certificate Registry list) - A list of invalidated certificates.", "CRL (Certificate Revocation liST) - A list of invalidated certificates."],
-    answer: "CRL (Certificate Revocation liST) - A list of invalidated certificates.",
+    options: ["CRL (Certificate Registry list) - A list of invalidated certificates.", "CRL (Certificate Revocation list) - A list of invalidated certificates."],
+    answer: "CRL (Certificate Revocation list) - A list of invalidated certificates.",
   },
   {
-    question: "CA (Certificate Authority) - Deploy and manage certificates.",
+    question: "CA (Certificate Authority) - Deploy's and manages certificates.",
     options: ["True", "False"],
     answer: "True",
   },
@@ -410,7 +410,7 @@ const quizDataArrays = [
     answer: "True",
   },
   {
-    question: "An 'Amplified DDoS attack' increase's the volume of traffic to a target by exploiting services that generate large responses.",
+    question: "An 'Amplified DDoS attack' increases the volume of traffic to a target by exploiting services that generate large responses.",
     options: ["False", "True"],
     answer: "True",
   },
@@ -434,10 +434,10 @@ const quizDataArrays = [
   {
     question: "Which is Correct?",
     options: [
-      "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator itself does not contain any user login information due to that data being placed on a central-server, which is also known as an AAA-Server?",
-      "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator contain's user credential data, which is verified by data held on a 'Central Server', which is finally verified by a AAA-Server?"],
+      "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator itself does not contain any user login information due to that data being placed on a central-server, which is also known as an AAA-Server.",
+      "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator contain's user credential data, which is verified by data held on a 'Central Server', which is finally verified by a AAA-Server."],
     answer:
-      "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator itself does not contain any user login information due to that data being placed on a central-server, which is also known as an AAA-Server?",
+      "When Authenticating to a VPN Concentrator/Firewall, the VPN Concentrator itself does not contain any user login information due to that data being placed on a central-server, which is also known as an AAA-Server.",
   },
   {
     question: "A Central-Server is also known as a AAA-Server?",
@@ -555,42 +555,42 @@ const quizDataArrays = [
       "Cross-site scripting (XSS) is a security vulnerability in web applications that allows attackers to inject"
       + "malicious scripts exploiting web-application vulnerabilities and manipulating the trust a browser has to the"
       + "web-application, this attack can result in stolen: cookies, session-tokens, etc."
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
-  {
-    question: "",
-    options: [""],
-    answer: "",
-  },
+  }
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
+  // {
+  //   question: "",
+  //   options: [""],
+  //   answer: "",
+  // },
 ];
 
 const quizContainer = document.getElementById('quiz');

@@ -1,22 +1,23 @@
 body {
-  margin: 0%;
+  text-align: center;
   font-size: 25px;
   font-size: 25px;
   font-family: "Exo", sans-serif;
-  font-optical-sizing: auto;
   font-style: normal;
   background-color: white;
   color: black;
+  width: 1900px;
 }
 
-#header {
+.header {
   display: flex;
-  flex-direction: row;
+  justify-content:space-around;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 4%;
-  padding-left: 3%;
-  padding-right: 4.5%;
+}
+
+#quiz-title {
+margin-left: 44px;
 }
 
 #day-n-night {
@@ -41,66 +42,60 @@ img:hover {
 
 @keyframes shake {
   0% {
-      transform: translate(1px, 1px) rotate(0deg);
+    transform: translate(1px, 1px) rotate(0deg);
   }
 
   10% {
-      transform: translate(-1px, -2px) rotate(-1deg);
+    transform: translate(-1px, -2px) rotate(-1deg);
   }
 
   20% {
-      transform: translate(-3px, 0px) rotate(1deg);
+    transform: translate(-3px, 0px) rotate(1deg);
   }
 
   30% {
-      transform: translate(3px, 2px) rotate(0deg);
+    transform: translate(3px, 2px) rotate(0deg);
   }
 
   40% {
-      transform: translate(1px, -1px) rotate(1deg);
+    transform: translate(1px, -1px) rotate(1deg);
   }
 
   50% {
-      transform: translate(-1px, 2px) rotate(-1deg);
+    transform: translate(-1px, 2px) rotate(-1deg);
   }
 
   60% {
-      transform: translate(-3px, 1px) rotate(0deg);
+    transform: translate(-3px, 1px) rotate(0deg);
   }
 
   70% {
-      transform: translate(3px, 1px) rotate(-1deg);
+    transform: translate(3px, 1px) rotate(-1deg);
   }
 
   80% {
-      transform: translate(-1px, -1px) rotate(1deg);
+    transform: translate(-1px, -1px) rotate(1deg);
   }
 
   90% {
-      transform: translate(1px, 2px) rotate(0deg);
+    transform: translate(1px, 2px) rotate(0deg);
   }
 
   100% {
-      transform: translate(1px, -2px) rotate(-1deg);
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }
 
-.outer-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .quiz-container {
-  margin-left: -20%;
+
+
 }
 
 .question {
-  text-align: center;
   font-size: 50px;
   font-weight: bolder;
-  
 }
 
 .options {
@@ -109,11 +104,10 @@ img:hover {
   margin-left: 30%;
   margin-right: 30%;
   font-size: 45px;
-  width: 50%;
 }
 
 .option {
-  display:block;
+  display: block;
   cursor: pointer;
   margin-top: 3.3%;
   text-align: center;
@@ -126,17 +120,18 @@ img:hover {
   background-color: red;
 }
 
-.button { 
+.button {
   position: relative;
-  left: 45%;
-  color: rgb(0, 0, 0);
-  background-color: rgb(166, 166, 166);
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   cursor: pointer;
   font-weight: bold;
   font-size: 25px;
   transition: background-color 0.3s;
   width: 13%;
   height: 55px;
+  border-width: 4px;
+  border-color: white;
   border-radius: 15px;
 }
 
@@ -151,7 +146,6 @@ img:hover {
   font-weight: bold;
 }
 
-.hide{
+.hide {
   display: none;
 }
-
