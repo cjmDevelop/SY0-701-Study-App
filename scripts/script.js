@@ -654,10 +654,10 @@ function checkAnswer() {
   optionLabels.forEach(label => {
     const input = label.querySelector('input');
     if (input.value === correct) {
-      label.style.backgroundColor = '#c8e6c9'; // light green for correct
+      label.style.backgroundColor = '#80ff00'; // light green for correct
     }
     if (input.checked && input.value !== correct) {
-      label.style.backgroundColor = '#ffcdd2'; // light red for incorrect
+      label.style.backgroundColor = '#ff1313'; // light red for incorrect
     }
     input.disabled = true;
   });

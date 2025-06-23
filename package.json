@@ -1,0 +1,24 @@
+{
+  "name": "sy0-701-study-app",
+  "version": "1.0.0",
+  "description": "JavaScript, CSS &amp; HTML score-keeping practice exam, filled with over 100 SY0-701 Exam questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjmDevelop/SY0-701-Study-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjmDevelop/SY0-701-Study-App/issues"
+  },
+  "homepage": "https://github.com/cjmDevelop/SY0-701-Study-App#readme",
+  "devDependencies": {
+    "eslint": "^9.29.0",
+    "vite": "^6.3.5"
+  }
+}
