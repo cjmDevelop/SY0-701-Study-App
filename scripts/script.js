@@ -680,15 +680,15 @@ function checkAnswer() {
     } else {
       displayResult();
     }
-  }, 1500); // 1.5 second delay
+  }, 3000); // 1.5 second delay
 }
 
 
 function displayResult() {
-  quizContainer.style.display = 'div';
-  submitButton.style.display = 'div';
-  retryButton.style.display = 'div';
-  showAnswerButton.style.display = 'div';
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = 'inlin-block';
   resultContainer.innerHTML = `You scored ${score} out of ${quizDataArrays.length}!`;
 }
 
@@ -741,3 +741,12 @@ function myFunction() {
   var element = document.body;
   element.classList.toggle("dark-mode");
 }
+
+
+/* To Do:
+1. Write the two variables for score tracking.
+
+*/
+
+let correctAnswersAnswered = 0;
+let incorrectAnswersAnswered = 0;
