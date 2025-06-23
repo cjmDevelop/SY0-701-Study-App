@@ -1,6 +1,4 @@
 const quizDataArrays = [
-
-  //################## TEST [A] ##################################################################
   {
     question: "Which accumulate's public data from a target without access to it's internal networks?",
     options: ['Passive Reconnaissance', 'Vulnerability Scanning', 'Supply Chain Analysis', 'Regulatory Audit'],
@@ -646,26 +644,45 @@ function displayQuestion() {
 
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="quiz"]:checked');
-  if (selectedOption) {
-    const answer = selectedOption.value;
-    if (answer === quizDataArrays[currentQuestion].answer) {
-      score++;
-    } else {
-      incorrectAnswers.push({
-        question: quizDataArrays[currentQuestion].question,
-        incorrectAnswer: answer,
-        correctAnswer: quizDataArrays[currentQuestion].answer,
-      });
+  if (!selectedOption) return;
+
+  const answer = selectedOption.value;
+  const correct = quizDataArrays[currentQuestion].answer;
+
+  const optionLabels = document.querySelectorAll('.option');
+
+  optionLabels.forEach(label => {
+    const input = label.querySelector('input');
+    if (input.value === correct) {
+      label.style.backgroundColor = '#c8e6c9'; // light green for correct
     }
+    if (input.checked && input.value !== correct) {
+      label.style.backgroundColor = '#ffcdd2'; // light red for incorrect
+    }
+    input.disabled = true;
+  });
+
+  if (answer === correct) {
+    score++;
+  } else {
+    incorrectAnswers.push({
+      question: quizDataArrays[currentQuestion].question,
+      incorrectAnswer: answer,
+      correctAnswer: correct,
+    });
+  }
+
+  // Delay going to next question to allow user to see feedback
+  setTimeout(() => {
     currentQuestion++;
-    selectedOption.checked = false;
     if (currentQuestion < quizDataArrays.length) {
       displayQuestion();
     } else {
       displayResult();
     }
-  }
+  }, 1500); // 1.5 second delay
 }
+
 
 function displayResult() {
   quizContainer.style.display = 'div';
