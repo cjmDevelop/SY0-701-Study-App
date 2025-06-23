@@ -6,7 +6,7 @@ _A self-built practice app for SY0-701 Security+ exam objectives_
 
 ## 📸 Screenshot
 
-![screenshot](public/site-pic.png)  
+![screenshot](site-pic.png)  
 
 
 ---
