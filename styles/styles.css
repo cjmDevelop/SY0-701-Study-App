@@ -94,7 +94,7 @@ img:hover {
 }
 
 
-.question {
+/* .question {
   font-size: 2rem;
   font-weight: bolder;
   width: 65%;
@@ -103,6 +103,14 @@ img:hover {
 .options {
   font-size: 1.5rem;
   width: 50%;
+} */
+
+
+.question,
+.options {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
 }
 
 
@@ -135,6 +143,8 @@ img:hover {
   border-width: 4px;
   border-color: white;
   border-radius: 15px;
+  min-width: 120px;
+  max-width: 120px;
 }
 
 .button:hover {
