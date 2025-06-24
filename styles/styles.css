@@ -170,3 +170,16 @@ img:hover {
   align-items: center;
 }
 
+footer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#footer-p {
+  font-size: 0.7rem; 
+  padding-top: 3%;
+  text-align: center; 
+  color: gray;
+  width: 55%;
+}
