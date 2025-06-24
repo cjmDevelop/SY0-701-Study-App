@@ -1113,9 +1113,6 @@ const quizDataArrays = [
   options: ["True", "False"],
   answer: "True"
 },
-
-
-
 ];
 
 const quizContainer = document.getElementById('quiz');
@@ -1124,11 +1121,17 @@ const submitButton = document.getElementById('submit');
 const retryButton = document.getElementById('retry');
 const showAnswerButton = document.getElementById('showAnswer');
 
+
 let score = 0;
 let currentQuestion = 0;
+
+const showQuestionNumber = document.getElementById('questionNumber');
+      showQuestionNumber.textContent = currentQuestion + 1;
+      
 let correctAnswersAnswered = 0;
 let incorrectAnswersAnswered = 0;
 let incorrectAnswers = [];
+
 
 // Shuffle
 function shuffleArray(array) {
