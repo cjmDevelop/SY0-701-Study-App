@@ -1,10 +1,10 @@
 
-# Cybersecurity Quiz App 🛡️  
+# Cybersecurity Quiz App 
 _A self-built practice app for SY0-701 Security+ exam objectives_
 
 ---
 
-## 📸 Screenshot
+
 
 ![screenshot](site-pic.png)  
 
