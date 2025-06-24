@@ -978,9 +978,9 @@ const quizDataArrays = [
   answer: "True"
 },
 {
-  question: "An IPS is primarily a detective control.",
+  question: "An IPS is primarily a preventive control.",
   options: ["True", "False"],
-  answer: "False"  // Correct answer: It's a *preventive* control, not detective.
+  answer: "True"  
 },
 {
   question: "Passive reconnaissance avoids direct interaction with the target system.",
@@ -1112,8 +1112,7 @@ const quizDataArrays = [
   question: "Risk acceptance means an organization knowingly accepts a risk without mitigation.",
   options: ["True", "False"],
   answer: "True"
-},
-];
+}];//quizDataArrays
 
 const quizContainer = document.getElementById('quiz');
 const resultContainer = document.getElementById('result');
@@ -1125,8 +1124,7 @@ const showAnswerButton = document.getElementById('showAnswer');
 let score = 0;
 let currentQuestion = 0;
 
-const showQuestionNumber = document.getElementById('questionNumber');
-      showQuestionNumber.textContent = currentQuestion + 1;
+
       
 let correctAnswersAnswered = 0;
 let incorrectAnswersAnswered = 0;
@@ -1142,6 +1140,10 @@ function shuffleArray(array) {
 }
 
 function displayQuestion() {
+
+const showQuestionNumber = document.getElementById('questionNumber');
+      showQuestionNumber.textContent = currentQuestion + 1;
+
   const questionData = quizDataArrays[currentQuestion];
   const questionElement = document.createElement('div');
   questionElement.className = 'question';
@@ -1199,7 +1201,6 @@ function checkAnswer() {
     });
     incorrectAnswersAnswered++;
   }
-  // Delay going to next question to allow user to see feedback
   setTimeout(() => {
     currentQuestion++;
     if (currentQuestion < quizDataArrays.length) {
@@ -1207,9 +1208,8 @@ function checkAnswer() {
     } else {
       displayResult();
     }
-  }, 0.5000); // 1.5 second delay
+  }, 650); 
 }
-
 
 function displayResult() {
   if (incorrectAnswersAnswered === 0) {

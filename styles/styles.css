@@ -17,7 +17,6 @@ body {
 .header {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   margin-bottom: 4%;
   padding-top: 5%;
 }
@@ -28,9 +27,9 @@ margin-left: 44px;
 
 #day-n-night {
   color: black;
-  border: 0.5 px solid aqua;
+  border: none;
   margin-left: 75%;
-  margin-top: 14%;
+  margin-top: 28%;
 }
 
 #day-n-night:focus {
