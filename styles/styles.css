@@ -105,14 +105,17 @@ img:hover {
   width: 50%;
 } */
 
+.question {
+  width: 100%;
+  max-width: 700px;
+  font-size: 1.4rem;
+}
 
-.question,
 .options {
   width: 100%;
   max-width: 400px;
   text-align: center;
 }
-
 
 .option {
   display: flex;
