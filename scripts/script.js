@@ -1119,6 +1119,7 @@ const resultContainer = document.getElementById('result');
 const submitButton = document.getElementById('submit');
 const retryButton = document.getElementById('retry');
 const showAnswerButton = document.getElementById('showAnswer');
+const showQuestionNumber = document.getElementById('questionNumber');
 
 let score = 0;
 let currentQuestion = 0;
@@ -1135,8 +1136,8 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-const showQuestionNumber = document.getElementById('questionNumber');
 
+//Display Quiz
 function displayQuestion() {
   showQuestionNumber.textContent = currentQuestion + 1;
   const questionData = quizDataArrays[currentQuestion];
@@ -1145,21 +1146,16 @@ function displayQuestion() {
   questionElement.innerHTML = questionData.question;
   const optionsElement = document.createElement('div');
   optionsElement.className = 'options';
-
   const shuffledOptions = [...questionData.options];
   shuffleArray(shuffledOptions);
-
   for (let i = 0; i < shuffledOptions.length; i++) {
     const option = document.createElement('label');
     option.className = 'option';
-
     const radio = document.createElement('input');
     radio.type = 'radio';
     radio.name = 'quiz';
     radio.value = shuffledOptions[i];
-
     const optionText = document.createTextNode(shuffledOptions[i]);
-
     option.appendChild(radio);
     option.appendChild(optionText);
     optionsElement.appendChild(option);
@@ -1204,7 +1200,7 @@ function checkAnswer() {
     } else {
       displayResult();
     }
-  }, 650); 
+  }, 650);
 }
 
 function displayResult() {
