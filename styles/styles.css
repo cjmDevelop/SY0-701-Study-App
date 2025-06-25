@@ -162,8 +162,8 @@ section {
 }
 
 .button:hover {
-  background-color: #80ff00;
-  color: #000000;
+  background-color: #0066ff;
+  color: white;
 }
 
 .result {

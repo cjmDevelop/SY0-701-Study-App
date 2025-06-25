@@ -40,7 +40,29 @@
                     </div>
                     <a href="#" id="skip-arrow" aria-label="Skip"><img src="public/skip-arrow.png" alt="Forward arrow"></a>
                 </div>
+                <div id="skip-warning" class="skip-warning hide">
+                    <p>You didn’t select an answer! Clicking skip again will lower your score.</p>
+                </div>
             </div>
+            <style>
+                .skip-warning {
+                margin-top: 1rem;
+                color: red;
+                font-weight: bold;
+                text-align: center;
+                animation: fadeIn 0.4s ease;
+                }
+
+                .skip-warning img {
+                width: 80px;
+                margin-bottom: 10px;
+                }
+
+                @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+                }
+            </style>
         </section>
     </main>
     <footer>
