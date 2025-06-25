@@ -1264,6 +1264,22 @@ function myFunction() {
 const backArrowButton = document.getElementById('back-arrow');
 const skipArrowButton = document.getElementById('skip-arrow');
 
+backArrowButton.addEventListener('click', function (e){
+  e.preventDefault();
+  if(currentQuestion > 0) {
+    currentQuestion--;
+    displayQuestion();
+  }
+});
+
+skipArrowButton.addEventListener('click', function (e){
+  e.preventDefault();
+  if(currentQuestion < quizDataArrays.length -1) {
+    currentQuestion++;
+    displayQuestion();
+  }
+});
+
 document.addEventListener('keydown', function(event) {
   const key = event.key;
   const options = document.querySelectorAll('input[name="quiz"]');
