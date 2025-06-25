@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,46 +13,54 @@
     <script src="https://kit.fontawesome.com/901275ddb7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="header">
-        <div id="header-content-container">
-            <h1 id="quiz-title">Cybersecurity Practice Quiz &bull; SY0-701</h1>
+    <header>
+        <div class="header">
+            <div id="header-content-container">
+                <h1 id="quiz-title">Cybersecurity Practice Quiz &bull; SY0-701</h1>
+                <div>
+                    <h2>Question #<span id="questionNumber"></span></h2>
+                </div>
+            </div>
             <div>
-                <h2>Question #<span id="questionNumber"></span></h2>
+                <button id="day-n-night" onclick="myFunction()"><i class="fa-solid fa-moon fa-2x"></i></button>
             </div>
         </div>
-        <div>
-            <button id="day-n-night" onclick="myFunction()"><i class="fa-solid fa-moon fa-2x"></i></button>
-        </div>
-    </div>
-        <div class="quiz-container">
-            <div id="quiz"></div>
-            <div class="arrow-container">
-            <a href="#" id="back-arrow" aria-label="Go Back"><img src="public/back-arrow.png" alt="Back arrow"></a>
-            <a href="#" id="skip-arrow" aria-label="Skip"><img src="public/skip-arrow.png" alt="Forward arrow"></a>
+    </header>
+    <main>
+        <section>
+            <div class="quiz-container">
+                <div id="quiz"></div>
+                <div class="arrow-container">
+                    <a href="#" id="back-arrow" aria-label="Go Back"><img src="public/back-arrow.png"
+                            alt="Back arrow"></a>
+                    <a href="#" id="skip-arrow" aria-label="Skip"><img src="public/skip-arrow.png"
+                            alt="Forward arrow"></a>
+                </div>
+                <div id="result" class="result"></div>
+                <button id="submit" class="button">Submit</button>
+                <button id="retry" class="hide button">Retry</button>
+                <button id="showAnswer" class="hide button">Show Answer</button>
             </div>
-            <div id="result" class="result"></div>
-            <button id="submit" class="button">Submit</button>
-            <button id="retry" class="hide button">Retry</button>
-            <button id="showAnswer" class="hide button">Show Answer</button>
-        </div>
+        </section>
+    </main>
     <footer>
         <p id="footer-p">
-           ⚠️ Disclaimer
-           This study app is intended as a general educational aid for 
-           individuals preparing for the CompTIA Security+ (SY0-701) 
-           exam. While every effort has been made to ensure accuracy, 
-           the content may contain errors or omissions. This resource is
+            ⚠️ Disclaimer
+            This study app is intended as a general educational aid for
+            individuals preparing for the CompTIA Security+ (SY0-701)
+            exam. While every effort has been made to ensure accuracy,
+            the content may contain errors or omissions. This resource is
             not affiliated with or endorsed by CompTIA. It should not be
-             considered a substitute for official training or 
-             certification materials. Use of this app is at your own 
-             risk. The developer assumes no liability for any losses 
-             or damages resulting from its use.
+            considered a substitute for official training or
+            certification materials. Use of this app is at your own
+            risk. The developer assumes no liability for any losses
+            or damages resulting from its use.
         </p>
     </footer>
     <script src="scripts/script.js"></script>
 </body>
 </html>
-    <!-- 
+<!-- 
     <div class="outer-container">
         <div id="pic-div">
             <img src="imgs/Spy_Vs_Spy.webp" alt="Spy_Vs_Spy">
