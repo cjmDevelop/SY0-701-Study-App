@@ -1,8 +1,6 @@
 
-# Cybersecurity Quiz App 
-_A self-built practice app for SY0-701 Security+ exam objectives_
-
----
+### Cybersecurity Quiz App  
+A self-built practice app for the [CompTIA Security+ (SY0-701)](https://partners.comptia.org/docs/default-source/resources/comptia-security-sy0-701-exam-objectives-(5-0)) exam objectives.
 
 
 
