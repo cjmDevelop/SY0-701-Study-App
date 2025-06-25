@@ -1131,6 +1131,8 @@ let correctAnswersAnswered = 0;
 let incorrectAnswersAnswered = 0;
 let incorrectAnswers = [];
 
+let userAnswers = new Array(quizDataArrays.length).fill(null);
+
 
 // Shuffle
 function shuffleArray(array) {
@@ -1158,7 +1160,9 @@ function displayQuestion() {
     radio.type = 'radio';
     radio.name = 'quiz';
     radio.value = shuffledOptions[i];
+    radio.checked = (userAnswers[currentQuestion] === shuffledOptions[i]);//restore's previous selection
     const optionText = document.createTextNode(shuffledOptions[i]);
+    // option.style.backgroundColor = ''; // Reset previous styles
     option.appendChild(radio);
     option.appendChild(optionText);
     optionsElement.appendChild(option);
@@ -1172,7 +1176,6 @@ function displayQuestion() {
   quizContainer.appendChild(optionsElement);
 }
 
-
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="quiz"]:checked');
   const correct = quizDataArrays[currentQuestion].answer;
@@ -1180,13 +1183,15 @@ function checkAnswer() {
   optionLabels.forEach(label => {
     const input = label.querySelector('input');
     if (input.value === correct) {
-      label.style.backgroundColor = '#80ff00';
+      // label.style.backgroundColor = '#80ff00';
     }
     if (input.checked && input.value !== correct) {
-      label.style.backgroundColor = '#ff1313';
+      // label.style.backgroundColor = '#ff1313';
     }
     input.disabled = true;
   });
+  // Only score if not already answered
+  if(userAnswers[currentQuestion] === null) {
   if(!selectedOption){
     incorrectAnswers.push({
       question: quizDataArrays[currentQuestion].question,
@@ -1194,8 +1199,10 @@ function checkAnswer() {
       correctAnswer: correct,
     });
     incorrectAnswersAnswered++;
+    userAnswers[currentQuestion] = "No answer selected";
   } else {
     const answer = selectedOption.value;
+    userAnswers[currentQuestion] = answer;//tracking user's answer incase of hitting back button to change an answer.
     if(answer === correct) {
       score++;
       correctAnswersAnswered++;
@@ -1208,6 +1215,7 @@ function checkAnswer() {
       incorrectAnswersAnswered++;
     }
   }
+}
   setTimeout(() => {
     currentQuestion++;
     if (currentQuestion < quizDataArrays.length) {
@@ -1215,22 +1223,27 @@ function checkAnswer() {
     } else {
       displayResult();
     }
-  }, 650);
+  }, 350);
 }
 
 function displayResult() {
-  if (incorrectAnswersAnswered === 0) {
-    quizContainer.style.display = 'none';
-    submitButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'inline-block';
-    resultContainer.innerHTML = `You scored ${score} out of ${quizDataArrays.length}!`;
+  quizContainer.style.display = 'none';
+  submitButton.style.display = 'none';
+  retryButton.style.display = 'inline-block';
+  showAnswerButton.style.display = incorrectAnswersAnswered > 0 ? 'inline-block' : 'none';
+
+  if (score === quizDataArrays.length) {
+    resultContainer.innerHTML = `
+      <p>You scored ${score} out of ${quizDataArrays.length}!</p>
+      <p style="color: green; font-weight: bold; font-size: 1.3rem;">
+         Perfect score! One step closer to cybersecurity certification! 
+      </p>
+    `;
   } else {
-    quizContainer.style.display = 'none';
-    submitButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'inline-block';
-    resultContainer.innerHTML = `You scored ${score} out of ${quizDataArrays.length}!`;
+    resultContainer.innerHTML = `
+      <p>You scored ${score} out of ${quizDataArrays.length}.</p>
+      <p>Click "Show Answer" to review the questions you missed.</p>
+    `;
   }
 }
 
@@ -1238,6 +1251,9 @@ function retryQuiz() {
   currentQuestion = 0;
   score = 0;
   incorrectAnswers = [];
+  incorrectAnswersAnswered = 0;
+  correctAnswersAnswered = 0;
+  userAnswers = new Array(quizDataArrays.length).fill(null);
   quizContainer.style.display = 'inline-block';
   submitButton.style.display = 'inline-block';
   retryButton.style.display = 'none';
@@ -1252,9 +1268,10 @@ function showAnswer() {
   retryButton.style.display = 'inline-block';
   showAnswerButton.style.display = 'none';
 
-  let incorrectAnswersHtml = '';
+  let incorrectAnswersHtml = '<div class="review-block">';
   for (let i = 0; i < incorrectAnswers.length; i++) {
     incorrectAnswersHtml += `
+    <div class=review-question">
         <p>
           <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
           <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
@@ -1262,6 +1279,7 @@ function showAnswer() {
         </p>
       `;
   }
+  incorrectAnswersHtml += '</div>';
   resultContainer.innerHTML = incorrectAnswersHtml;
 }
 
@@ -1285,21 +1303,27 @@ backArrowButton.addEventListener('click', function (e){
   }
 });
 
-// skipArrowButton.addEventListener('click', function (e){
-//   e.preventDefault();
-//   if(currentQuestion < quizDataArrays.length -1) {
-//     currentQuestion++;
-//     displayQuestion();
-//   }
-// });
-
 skipArrowButton.addEventListener('click', function(e) {
   e.preventDefault();
   handleArrowSubmitAndNext();
 });
+
+let warnedAboutSkip = false;
+
 function handleArrowSubmitAndNext() {
   const selectedOption = document.querySelector('input[name="quiz"]:checked');
-  if(!selectedOption) {
+  const alreadyAnswered = userAnswers[currentQuestion] !== null;
+
+  const skipWarningEl = document.getElementById('skip-warning');
+
+  if (!selectedOption && !alreadyAnswered) {
+    if (!warnedAboutSkip) {
+      skipWarningEl.classList.remove('hide');
+      warnedAboutSkip = true;
+      return;
+    }
+
+    // User clicked skip again — confirm the skip
     const correct = quizDataArrays[currentQuestion].answer;
     incorrectAnswers.push({
       question: quizDataArrays[currentQuestion].question,
@@ -1307,19 +1331,29 @@ function handleArrowSubmitAndNext() {
       correctAnswer: correct,
     });
     incorrectAnswersAnswered++;
-  } else {
+    userAnswers[currentQuestion] = "No answer selected";
+  }
+
+  // Proceed normally
+  skipWarningEl.classList.add('hide');
+  warnedAboutSkip = false;
+
+  if (selectedOption) {
     checkAnswer();
     return;
   }
+
   setTimeout(() => {
     currentQuestion++;
-    if(currentQuestion < quizDataArrays.length) {
+    if (currentQuestion < quizDataArrays.length) {
       displayQuestion();
     } else {
       displayResult();
     }
   }, 650);
 }
+
+
 
 document.addEventListener('keydown', function(event) {
   const key = event.key;
