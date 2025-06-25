@@ -1269,15 +1269,14 @@ function showAnswer() {
   showAnswerButton.style.display = 'none';
 
   let incorrectAnswersHtml = '<div class="review-block">';
-  for (let i = 0; i < incorrectAnswers.length; i++) {
+ for (let i = 0; i < incorrectAnswers.length; i++) {
     incorrectAnswersHtml += `
-    <div class=review-question">
-        <p>
-          <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
-          <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
-          <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
-        </p>
-      `;
+      <div style="background-color: #f9f9f9; border-left: 4px solid #ccc; margin-bottom: 20px; padding: 10px 15px; border-radius: 8px;">
+        <p style="margin: 5px 0; font-size: 1rem;"><strong>Question:</strong> ${incorrectAnswers[i].question}</p>
+        <p style="margin: 5px 0; font-size: 1rem;"><strong>Your Answer:</strong> <span style="color: red; font-weight: bold;">${incorrectAnswers[i].incorrectAnswer}</span></p>
+        <p style="margin: 5px 0; font-size: 1rem;"><strong>Correct Answer:</strong> <span style="color: green; font-weight: bold;">${incorrectAnswers[i].correctAnswer}</span></p>
+      </div>
+    `;
   }
   incorrectAnswersHtml += '</div>';
   resultContainer.innerHTML = incorrectAnswersHtml;
