@@ -94,6 +94,20 @@ margin-left: 44px;
   }
 } */
 
+section {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ .quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .question {
   width: 100%;
   max-width: 600px;
@@ -208,3 +222,4 @@ footer {
   color: gray;
   width: 55%;
 }
+
