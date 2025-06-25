@@ -11,7 +11,7 @@ A practice app for the [CompTIA Security+ (SY0-701)](https://partners.comptia.or
 
 ##  About This Project
 
-A personal study project to help me with my coding skills and to retain the SY0-701 Security+ exam course objectives subject matter.
+A personal study project to help me with my coding skills and to pass the SY0-701 Security+ exam.
 
 - Written in **HTML, CSS, and JavaScript**
 
