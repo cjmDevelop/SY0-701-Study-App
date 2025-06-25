@@ -1223,8 +1223,6 @@ function displayResult() {
   }
 }
 
-
-
 function retryQuiz() {
   currentQuestion = 0;
   score = 0;
@@ -1261,12 +1259,10 @@ showAnswerButton.addEventListener('click', showAnswer);
 
 displayQuestion();
 
-
 function myFunction() {
   var element = document.body;
   element.classList.toggle("dark-mode");
 }
-
 
 //==================================================================
 const backArrowButton = document.getElementById('back-arrow');
