@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   text-align: center;
+  box-sizing: content-box;
 }
 
 body {
@@ -42,7 +43,7 @@ margin-left: 44px;
 }
 
 
-img:hover {
+/* img:hover {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
@@ -91,18 +92,6 @@ img:hover {
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
   }
-}
-
-
-/* .question {
-  font-size: 2rem;
-  font-weight: bolder;
-  width: 65%;
-}
-
-.options {
-  font-size: 1.5rem;
-  width: 50%;
 } */
 
 .question {
@@ -184,4 +173,39 @@ footer {
   text-align: center; 
   color: gray;
   width: 55%;
+}
+
+/*--Arrows-------*/
+.arrow-container {
+ margin-top: 1.1%;
+ display: flex;
+ justify-content: center;
+ gap: 40px; 
+}
+
+#back-arrow,
+#skip-arrow {
+padding: 0 3%;
+}
+
+#back-arrow img,
+#skip-arrow img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+/* Hover effect */
+#back-arrow img:hover,
+#skip-arrow img:hover {
+  transform: scale(1.3);
+  filter: brightness(1.4);
+  /* filter: drop-shadow(0 0 6px #ffee00) brightness(1.3); */
+}
+
+/* Keyboard feedback class */
+.arrow-active {
+  transform: scale(1.3);
+  transition: transform 0.1s ease-in-out;
+  /* filter: drop-shadow(0 0 6px #ffee00) brightness(1.3); */
 }

@@ -1120,12 +1120,9 @@ const submitButton = document.getElementById('submit');
 const retryButton = document.getElementById('retry');
 const showAnswerButton = document.getElementById('showAnswer');
 
-
 let score = 0;
 let currentQuestion = 0;
 
-
-      
 let correctAnswersAnswered = 0;
 let incorrectAnswersAnswered = 0;
 let incorrectAnswers = [];
@@ -1138,12 +1135,10 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
+const showQuestionNumber = document.getElementById('questionNumber');
 
 function displayQuestion() {
-
-const showQuestionNumber = document.getElementById('questionNumber');
-      showQuestionNumber.textContent = currentQuestion + 1;
-
+  showQuestionNumber.textContent = currentQuestion + 1;
   const questionData = quizDataArrays[currentQuestion];
   const questionElement = document.createElement('div');
   questionElement.className = 'question';
@@ -1173,6 +1168,7 @@ const showQuestionNumber = document.getElementById('questionNumber');
   quizContainer.appendChild(questionElement);
   quizContainer.appendChild(optionsElement);
 }
+
 
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="quiz"]:checked');
@@ -1265,8 +1261,6 @@ showAnswerButton.addEventListener('click', showAnswer);
 
 displayQuestion();
 
-//-------------------------------------------------------------------------
-
 
 function myFunction() {
   var element = document.body;
@@ -1274,4 +1268,63 @@ function myFunction() {
 }
 
 
+//==================================================================
+const backArrowButton = document.getElementById('back-arrow');
+const skipArrowButton = document.getElementById('skip-arrow');
 
+document.addEventListener('keydown', function(event) {
+  const key = event.key;
+  const options = document.querySelectorAll('input[name="quiz"]');
+
+  if ((key === 'ArrowDown' || key === 'ArrowUp') && options.length > 0) {
+    event.preventDefault();
+
+    let currentIndex = -1;
+    options.forEach((option, index) => {
+      if (document.activeElement === option) {
+        currentIndex = index;
+      }
+    });
+
+    if (key === 'ArrowDown' && currentIndex < options.length - 1) {
+      options[currentIndex + 1].focus();
+    }
+
+    if (key === 'ArrowUp' && currentIndex > 0) {
+      options[currentIndex - 1].focus();
+    }
+
+    // If none focused, focus the first option on ↓
+    if (currentIndex === -1 && key === 'ArrowDown') {
+      options[0].focus();
+    }
+  }
+
+  if (key === 'Enter' || key === ' ' || key === 'Space') {
+    event.preventDefault();
+    const selectedOption = document.querySelector('input[name="quiz"]:checked');
+    if (selectedOption) {
+      checkAnswer();
+    }
+  }
+
+  if (key === 'ArrowRight') {
+    skipArrowButton.classList.add('arrow-active');
+    setTimeout(() => skipArrowButton.classList.remove('arrow-active'), 150);
+    if (currentQuestion < quizDataArrays.length - 1) {
+      currentQuestion++;
+      displayQuestion();
+    }
+  }
+
+  if (key === 'ArrowLeft') {
+    backArrowButton.classList.add('arrow-active');
+    setTimeout(() => backArrowButton.classList.remove('arrow-active'), 150);
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      displayQuestion();
+    }
+  }
+});
+
+//======================================================================================
