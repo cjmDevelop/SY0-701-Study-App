@@ -93,3 +93,6 @@ ehthumbs.db
 # Any other generated or unnecessary files
 *.bak
 *.tmp
+
+
+scrap.js
