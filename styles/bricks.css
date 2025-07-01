@@ -1,13 +1,17 @@
 
 
-#quizPyramid {
-
+.quizPyramid {
 
 
 }
 
 #brick {
-width: 65px;
-height: 65px;
-background: black;
+width: 45px;
+height: 45px;
+border: 2px solid black;
+}
+
+#brick-layer {
+    display: flex;
+    justify-content: center;
 }
