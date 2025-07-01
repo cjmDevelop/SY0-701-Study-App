@@ -6,6 +6,7 @@
     <title>Cybersecurity Practice Quiz &bull; SY0-701</title>
     <link rel="icon" href="/green-quiz-icon.png">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/bricks.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
@@ -29,20 +30,32 @@
     <main>
         <section>
             <div class="quiz-container">
-                <div id="quiz"></div>
-                <div id="result" class="result"></div>
+
+
+                <div id="quizPyramid">
+                    <div id="brick"></div>
+                </div>
+
+              
+                
                 <div class="arrow-container">
+                      <div id="quiz"></div>
                     <a href="#" id="back-arrow" aria-label="Go Back"><img src="/back-arrow.png" alt="Back arrow"></a>
                     <div class="button-container">
                         <button id="submit" class="button">Submit</button>
-                        <button id="retry" class="hide button">Retry</button>
-                        <button id="showAnswer" class="hide button">Results</button>
                     </div>
                     <a href="#" id="skip-arrow" aria-label="Skip"><img src="/skip-arrow.png" alt="Forward arrow"></a>
                 </div>
                 <div id="skip-warning" class="skip-warning hide">
                     <p>You didn’t select an answer! Clicking skip again will lower your score.</p>
                 </div>
+
+
+                <div id="quizPyramid">
+                    <div id="brick"></div>
+                </div>
+
+
             </div>
         </section>
     </main>
