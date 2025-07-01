@@ -5,13 +5,13 @@
 
 }
 
-#brick {
+.brick {
 width: 45px;
 height: 45px;
 border: 2px solid black;
 }
 
-#brick-layer {
+.brick-layer {
     display: flex;
     justify-content: center;
 }

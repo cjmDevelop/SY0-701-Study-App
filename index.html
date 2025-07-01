@@ -20,7 +20,8 @@
             <div id="header-content-container">
                 <h1 id="quiz-title">Cybersecurity Practice Quiz &bull; SY0-701</h1>
                 <div>
-                    <h2>Question #<span id="questionNumber"></span></h2>
+                    <h2>Quiz #<span id="quizNumber"></span></h2>
+                    <h2>Question #<span id="questionNumber"></span> out of<span id="quizQuestionAmount"></span></h2>
                 </div>
             </div>
             <div>
@@ -28,19 +29,55 @@
             </div>
         </div>
     </header>
+
+
+<style>
+#test-click{
+  width: 150px;
+  height: 150px;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+#test-click:hover {
+  background-color: #45a049;
+}
+#info-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-left: 4px solid #4CAF50;
+  display: none;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+</style>
+    <!-- <div id="test-click">Click Me</div>
+    <div id="info-box"></div> -->
+
+
     <main>
         <section>
             <div class="quiz-container">
-
-
                 <div id="timer">
                     <div id="time"></div>
                 </div>
+                <div class="entry-container">
 
-              
-                
-                <div class="arrow-container">
+
+
+
                       <div id="quiz"></div>
+
+
+
+
                     <a href="#" id="back-arrow" aria-label="Go Back"><img src="/back-arrow.png" alt="Back arrow"></a>
                     <div class="button-container">
                         <button id="submit" class="button">Submit</button>
@@ -50,28 +87,50 @@
                 <div id="skip-warning" class="skip-warning hide">
                     <p>You didn’t select an answer! Clicking skip again will lower your score.</p>
                 </div>
+                
+
+
+
+
+
+
+
+
+
 
 
                 <div class="quizPyramid" style="border: 2px solid purple;">
-                    <div id="brick-layer">
-                        <div id="brick"></div>
+                    <div class="brick-layer">
+                        <div class="brick">10</div>
                     </div>
-                    <div id="brick-layer">
-                        <div id="brick"></div>
-                        <div id="brick"></div>
+                    <div class="brick-layer">
+                        <div class="brick">8</div>
+                        <div class="brick">9</div>
                     </div>
-                    <div id="brick-layer">
-                        <div id="brick"></div>
-                        <div id="brick"></div>
-                        <div id="brick"></div>
+                    <div class="brick-layer">
+                        <div class="brick">5</div>
+                        <div class="brick">6</div>
+                        <div class="brick">7</div>
                     </div>
-                    <div id="brick-layer">
-                        <div id="brick"></div>
-                        <div id="brick"></div>
-                        <div id="brick"></div>
-                        <div id="brick"></div>
+                    <div class="brick-layer">
+                        <div class="brick">1</div>
+                        <div class="brick">2</div>
+                        <div class="brick">3</div>
+                        <div class="brick">4</div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             </div>
