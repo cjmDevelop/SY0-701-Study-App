@@ -9,6 +9,10 @@
 width: 45px;
 height: 45px;
 border: 2px solid black;
+cursor: pointer;
+}
+.brick:hover {
+    border: 2px solid blue;
 }
 
 .brick-layer {

@@ -8,31 +8,15 @@ import { seventhQuiz } from './seventh-quiz.js'
 
 const quizzes = [firstQuiz, secondQuiz, thirdQuiz, fourthQuiz, fifthQuiz, sixthQuiz, seventhQuiz];
 
-const bricks = document.querySelectorAll('.brick');
-      bricks.forEach((brick, index) => {
-        if(quizzes[index]) {
-            brick.textContent = index + 1;
-        } else {
-            brick.textContent = '';
-        }
-      });
 
-/** Test Example
-const box = document.getElementById('test-click');
-const infoBox = document.getElementById('info-box');
-let infoShown = false;
-
-box.addEventListener('click', () => {
-    if(!infoShown){
-        infoBox.style.display = 'block';
-        infoBox.textContent = 'This is only a test.'
-        infoShown = true;
-    } else {
-        infoBox.style.display = 'none';
-        infoBox.textContent = '';
-        infoShown = false;
-    }
-    
-});
-*/
+function startQuiz(index) {
+    const quiz = quizzes[index];
+     if(!quiz) {
+        console.warn(`No quiz found at index ${index}`);
+        return;
+     }
+     console.log("Starting quiz:", index);
+     console.log(quiz);
+}
+window.startQuiz = startQuiz;
 
