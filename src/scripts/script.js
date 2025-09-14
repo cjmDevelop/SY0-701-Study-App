@@ -1123,6 +1123,8 @@ const showAnswerButton = document.getElementById('showAnswer');
 const showQuestionNumber = document.getElementById('questionNumber');
 const backArrowButton = document.getElementById('back-arrow');
 const skipArrowButton = document.getElementById('skip-arrow');
+const popupA = document.getElementById('popup-a');
+const popupB = document.getElementById('popup-b');
 
 let score = 0;
 let currentQuestion = 0;
@@ -1227,6 +1229,9 @@ function checkAnswer() {
 }
 
 function displayResult() {
+  popupA.style.display = 'block';
+  popupB.style.display = 'block';
+  
   quizContainer.style.display = 'none';
   submitButton.style.display = 'none';
   retryButton.style.display = 'inline-block';
