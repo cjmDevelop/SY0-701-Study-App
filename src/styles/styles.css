@@ -11,7 +11,7 @@ body {
   font-style: normal;
   color: black;
 
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
 }
 
 .header {
@@ -20,13 +20,13 @@ body {
   margin-bottom: 4%;
   padding-top: 5%;
 
-  border: 3px solid red;
+  /* border: 3px solid red; */
 }
 
 #quiz-title {
 margin-left: 44px;
 
-border: 2px solid green;
+/* border: 2px solid green; */
 }
 
 #day-n-night {
@@ -35,7 +35,7 @@ border: 2px solid green;
   margin-left: 75%;
   margin-top: 28%;
 
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   cursor: pointer;
 }
 
@@ -106,7 +106,7 @@ section {
   align-items: center;
   justify-content: center;
   
-  border: 4px solid purple;
+  /* border: 4px solid purple; */
   width: 100%;
 }
 
@@ -116,7 +116,7 @@ section {
   align-items: center;
   justify-content: center;
 
-  border: 4px solid black;
+  /* border: 4px solid black; */
   width: 100%;
 }
 
@@ -125,7 +125,7 @@ section {
   max-width: 600px;
   font-size: 1.4rem;
 
-  border: 4px #0066ff solid;
+  /* border: 4px #0066ff solid; */
 }
 
 .options {
@@ -133,7 +133,7 @@ section {
   max-width: 400px;
   text-align: center;
 
-  border: 4px solid chartreuse;
+  /* border: 4px solid chartreuse; */
 }
 
 .option {
