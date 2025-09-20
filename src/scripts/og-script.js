@@ -1416,3 +1416,29 @@ document.addEventListener('keydown', function(event) {
 });
 
 //======================================================================================
+
+
+/**
+ * 
+ * 
+ *  <header>
+    <a href="index.html" class="active">
+      <img src="/logo-guyana-usa-theme.png" alt="Backyard Builds Logo" />
+    </a>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="backyard-builds.html">BackyardBuilds</a>
+      <a href="contact-us.html">Contact Us</a>
+    </nav>
+  </header>
+ * 
+ * 
+ * 
+ * 
+ * • Categories
+- Technical
+- Managerial - Operational - Physical
+ * 
+ * 
+ */
