@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My SY0-701 Study Web-App</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/quiz.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="#" class="active">Quizzes</a>
+            <a href="#" onclick="showAbout()">About</a>
+            <a href="#" onclick="showContact()">Contact</a>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <div id="banner-content-container">
+            <h1 id="quiz-title">My CompTIA Security + SY0-701 Practice Quiz</h1>
+            <div>
+                <h2>Quiz #<span id="quiz-number">1</span></h2>
+                <h2>Question #<span id="questionNumber">1</span> out of <span id="quiz-questions-amount">10</span></h2>
+            </div>
+    
+            <div class="timer-container">
+                <div class="timer-display">
+                    <span class="timer-label">Time:</span>
+                    <span id="timer">00:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <div id="popup-a"><img src="spyvsspy.jpg" alt="Pop up of SpyVsSpy image indicating end of quiz"></div>
+            <div class="quiz-container">
+                <div id="quiz"></div>
+                <div id="result" class="result"></div>
+                <div class="arrow-container">
+                    <a href="#" id="back-arrow" aria-label="Go Back"><img src="arrow_back_ios_new_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Back arrow" style="filter: invert(1);"></a>
+                    <div class="button-container">
+                        <button id="submit" class="button">Submit</button>
+                        <button id="retry" class="hide button">Retry</button>
+                        <button id="showAnswer" class="hide button">Show Answers</button>
+                    </div>
+                    <a href="#" id="skip-arrow" aria-label="Skip"><img src="arrow_forward_ios_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="Forward arrow" style="filter: invert(1);"></a>
+                </div>
+                <div id="skip-warning" class="skip-warning hide">
+                    <p>You didn't select an answer! Clicking skip again will lower your score.</p>
+                </div>
+            </div>
+            <div id="popup-b"><img src="spyvsspy.jpg" alt="Pop up of SpyVsSpy image indicating end of quiz"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p id="footer-p">
+            ⚠️ Disclaimer
+            This study app is intended as a general educational aid for
+            individuals preparing for the CompTIA Security+ (SY0-701)
+            exam. While every effort has been made to ensure accuracy,
+            the content may contain errors or omissions. This resource is
+            not affiliated with or endorsed by CompTIA. It should not be
+            considered a substitute for official training or
+            certification materials. Use of this app is at your own
+            risk. The developer assumes no liability for any losses
+            or damages resulting from its use.
+        </p>
+    </footer>
+    <script type="module" src="src/scripts/og-script.js"></script>
+</body>
+</html>
+
+
+

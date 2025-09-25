@@ -6,7 +6,7 @@ A practice app for the [CompTIA Security+ (SY0-701)](https://partners.comptia.or
 
 
 
-![screenshot](site-pic.png)  
+![screenshot](ss-index.png)  
 
 
 ---
@@ -16,4 +16,6 @@ A practice app for the [CompTIA Security+ (SY0-701)](https://partners.comptia.or
 A personal study project to help me with my coding skills and to pass the SY0-701 Security+ exam.
 
 - Written in **HTML, CSS, and JavaScript**
+
+![screenshot](ss-quiz.png)
 
