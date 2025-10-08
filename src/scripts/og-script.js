@@ -1,10 +1,20 @@
-import { firstQuiz } from './first-quiz.js'
-import { secondQuiz } from './second-quiz.js'
-import { thirdQuiz } from './third-quiz.js'
-import { fourthQuiz } from './fourth-quiz.js'
-import { fifthQuiz } from './fifth-quiz.js'
-import { sixthQuiz } from './sixth-quiz.js'
-import { seventhQuiz } from './seventh-quiz.js'
+import { firstQuiz } from './_temp/first-quiz.js'
+import { secondQuiz } from './_temp/second-quiz.js'
+import { thirdQuiz } from './_temp/third-quiz.js'
+import { fourthQuiz } from './_temp/fourth-quiz.js'
+import { fifthQuiz } from './_temp/fifth-quiz.js'
+import { sixthQuiz } from './_temp/sixth-quiz.js'
+import { seventhQuiz } from './_temp/seventh-quiz.js'
+
+/* Chapters 1.0 - 1.4 */
+import { securityControlsQuiz } from './1/1.0-1.1/securityControlsQuiz.js'
+import { fundamentalSecurityConceptsQuiz } from './1/1.2/fundamentalSecurityConceptsQuiz.js'
+import { changeManagementProcessQuiz } from './1/1.3/changeManagementQuiz.js'
+import { cryptographicQuiz } from './1/1.4/cryptographicQuiz.js'
+
+/* Chapters 2.0 - 2.5  */
+
+
 
 
 const quizzes = [firstQuiz, secondQuiz, thirdQuiz, fourthQuiz, fifthQuiz, sixthQuiz, seventhQuiz];
@@ -38,7 +48,7 @@ const skipArrowButton = document.getElementById('skip-arrow');
 const popupA = document.getElementById('popup-a');
 const popupB = document.getElementById('popup-b');
 const quizNumber = document.getElementById('quiz-number');
-const quizQuestionNumber = document.getElementById('quiz-questions-amount');
+const quizQuestionAmount = document.getElementById('quiz-questions-amount');
 
 let score = 0;
 let currentQuestion = 0;
@@ -60,18 +70,33 @@ function shuffleArray(array) {
 let max = 7;
 let randomNumber = Math.floor(Math.random() * max);
 
-console.log(randomNumber);
-console.log(quizzes[randomNumber][randomNumber]);
+// console.log(randomNumber);
+// console.log(quizzes[randomNumber][randomNumber]);
+
+
+
+  for (let i = 0; i < quizzes.length; i++) {
+    for (let k = 0; k < quizzes.length; k++) {
+      console.log(quizzes[i][k]);
+    }
+  }
+
 
 
 
 //Display Quiz
 function displayQuestion() {
-  showQuestionNumber.textContent = currentQuestion + 1;
-  quizNumber.textContent = randomNumber + 1;
-  quizQuestionNumber.textContent = quizzes[randomNumber].length;
-  // const questionData = quizDataArrays[currentQuestion];
+  showQuestionNumber.textContent = currentQuestion + 1; //✅
+  quizNumber.textContent = randomNumber + 1; //✅
+  quizQuestionAmount.textContent = quizzes[randomNumber].length; //✅
+  
   const questionData = quizzes[randomNumber][randomNumber];
+  //To do: Get QuestionData needs to go through each question once
+
+
+
+
+
   const questionElement = document.createElement('div');
   questionElement.className = 'question';
   questionElement.innerHTML = questionData.question;
