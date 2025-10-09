@@ -34,8 +34,11 @@
             font-size: 1.5rem;
             font-weight: 900;
             color: white;
-            border-bottom: 2px solid red;
+            /* border-bottom: 2px solid red; */
             text-decoration: none;
+        }
+        .logo:hover {
+            border-bottom: 2px solid red;
         }
 
         nav {

@@ -503,5 +503,5 @@ export const threatVectorsAndAttackSurfacesQuiz = [
   }
 ]
 
-console.log(twoTwoQuiz.length);
+console.log(threatVectorsAndAttackSurfacesQuiz.length);
 //81
