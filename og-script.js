@@ -39,7 +39,7 @@ const resultContainer = document.getElementById('result');
 const submitButton = document.getElementById('submit');
 const retryButton = document.getElementById('retry');
 const showAnswerButton = document.getElementById('showAnswer');
-const showQuestionNumber = document.getElementById('questionNumber');
+const showQuestionNumber = document.getElementById('question-number');
 const backArrowButton = document.getElementById('back-arrow');
 const skipArrowButton = document.getElementById('skip-arrow');
 const popupA = document.getElementById('popup-a');
@@ -97,10 +97,15 @@ function displayQuestion() {
   const questionElement = document.createElement('div');
   questionElement.className = 'question';
   questionElement.innerHTML = questionData.question;
+
   const optionsElement = document.createElement('div');
-  optionsElement.className = 'options';
+        optionsElement.className = 'options';
+
+        
   const shuffledOptions = [...questionData.options];
   shuffleArray(shuffledOptions);
+
+
   for (let i = 0; i < shuffledOptions.length; i++) {
     const option = document.createElement('label');
     option.className = 'option';
