@@ -1612,5 +1612,5 @@ export const securityArchitectureQuiz = [
   }
 ]
 
-console.log(securityArchitectureQuiz.length);
+// console.log(securityArchitectureQuiz.length);
 //152

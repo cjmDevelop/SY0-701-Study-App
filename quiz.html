@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="src/styles/quiz.css">
 </head>
 <body>
-
     <header>
         <a href="index.html" class="logo">My SY0-701 Study App</a>
         <nav>
             <a href="/index.html">Home</a>
-            <!-- <a href="#" class="active">Quizzes</a> -->
+            <a href="quiz-menu.html" >Quiz Menu</a>
             <a href="#" onclick="showAbout()">About</a>
             <a href="#" onclick="showContact()">Contact</a>
         </nav>
     </header>
-
     <div class="banner">
         <div id="banner-content-container">
             <h1 id="quiz-title">My CompTIA Security + SY0-701 Practice Quiz</h1>
@@ -26,7 +24,6 @@
                 <h2>Quiz #<span id="quiz-number"></span></h2>
                 <h2>Question #<span id="questionNumber"></span> out of <span id="quiz-questions-amount"></span></h2>
             </div>
-    
             <div class="timer-container">
                 <div class="timer-display">
                     <span class="timer-label">Time:</span>
@@ -35,10 +32,13 @@
             </div>
         </div>
     </div>
-
     <main>
         <section>
             <div id="popup-a"><img src="spyvsspy.jpg" alt="Pop up of SpyVsSpy image indicating end of quiz"></div>
+            
+
+
+
             <div class="quiz-container">
                 <div id="quiz"></div>
                 <div id="result" class="result"></div>
@@ -55,10 +55,15 @@
                     <p>You didn't select an answer! Clicking skip again will lower your score.</p>
                 </div>
             </div>
+        
+
+
+
+
+           
             <div id="popup-b"><img src="spyvsspy.jpg" alt="Pop up of SpyVsSpy image indicating end of quiz"></div>
         </section>
     </main>
-
     <footer>
         <p id="footer-p">
             ⚠️ Disclaimer
@@ -73,7 +78,7 @@
             or damages resulting from its use.
         </p>
     </footer>
-    <script type="module" src="src/scripts/og-script.js"></script>
+    <script type="module" src="src/scripts/og-script-copy.js"></script>
 </body>
 </html>
 

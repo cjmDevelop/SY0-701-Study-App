@@ -2,7 +2,7 @@ export const securityControlsQuiz = [
   // Control Categories (Technical, Managerial, Operational, Physical)
   {
     quiz_ID: 1.1,
-    quiz_name: "1.0 - 1.1 General Security Concepts"
+    quiz_name: "General Security Concepts"
   },
   {
     question: "Which of the following is an example of a technical security control?",
@@ -145,5 +145,5 @@ export const securityControlsQuiz = [
 // Or for browser environments:
 // window.securityControlsQuiz = securityControlsQuiz;
 
-console.log(securityControlsQuiz.length); 
+// console.log(securityControlsQuiz.length); 
 // 24 qustions, zero index is quiz title info. 

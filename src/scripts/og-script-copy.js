@@ -4,14 +4,8 @@ import { fundamentalSecurityConceptsQuiz } from './1/1.2/fundamentalSecurityConc
 import { changeManagementProcessQuiz } from './1/1.3/changeManagementQuiz.js'
 import { cryptographicQuiz } from './1/1.4/cryptographicQuiz.js'
 
-/* Chapters 2.0 - 2.5  */
-import { threatActorsAndMotivationsQuiz } from './2/2.0-2.1/threatActorsAndMotivationsQuiz.js'
-import { threatVectorsAndAttackSurfacesQuiz } from './2/2.2/threatVectorsAndAttackSurfacesQuiz.js'
-import { vulnerabilitiesQuiz } from './2/2.3/vulnerabilitiesQuiz.js'
-import { indicatorsOfMaliciousActivityQuiz } from './2/2.4/indicatorsOfMaliciousActivityQuiz.js'
-import { mitigationTechniquesQuiz } from './2/2.5/mitigationTechniquesQuiz.js'
+//Get Domain from URL
+const urlParams = new URLSearchParams(window.location.search);
+const domain = urlParams.get('domain');
 
-function getQuizInfo(quiz){
-return quiz[0];
-}
-
+console.log(domain);

@@ -1,7 +1,7 @@
 export const changeManagementProcessQuiz = [
     {
     quiz_ID: 1.3,
-    quiz_name: "1.3 - Change Management Process"
+    quiz_name: "Change Management Process"
   },
   // Importance of Change Management
   {
@@ -452,5 +452,5 @@ export const changeManagementProcessQuiz = [
   }
 ]
 
-console.log(changeManagementProcessQuiz.length);
+// console.log(changeManagementProcessQuiz.length);
 //51

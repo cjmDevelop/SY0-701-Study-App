@@ -1,7 +1,7 @@
 export const cryptographicQuiz = [
     {
     quiz_ID: 1.4,
-    quiz_name: "1.4 - Cryptographic Solutions"
+    quiz_name: "Cryptographic Solutions"
   },
   // --- PKI ---
   {
@@ -446,5 +446,5 @@ export const cryptographicQuiz = [
   }
 ]
 
-console.log(cryptographicQuiz.length);
+// console.log(cryptographicQuiz.length);
 //59

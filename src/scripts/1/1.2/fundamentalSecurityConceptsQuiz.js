@@ -1,7 +1,7 @@
 export const fundamentalSecurityConceptsQuiz = [
     {
     quiz_ID: 1.2,
-    quiz_name: "1.2 - Fundamental Security Concepts"
+    quiz_name: "Fundamental Security Concepts"
   },
   // CIA Triad
   {
@@ -195,5 +195,5 @@ export const fundamentalSecurityConceptsQuiz = [
   }
 ]
 
-console.log(fundamentalSecurityConceptsQuiz.length);
+// console.log(fundamentalSecurityConceptsQuiz.length);
 //33
