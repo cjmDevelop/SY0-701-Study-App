@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - My SY0-701 Study App</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/auth.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1>Welcome Back</h1>
+                <p class="auth-subtitle">Login to access all SY0-701 quiz domains</p>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                    <button type="submit" class="auth-button" id="loginButton">
+                        <span class="button-text">Login</span>
+                        <span class="button-loader" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/cjmDevelop/CyberSecurity-QuizApp-SY0-701" target="_blank">GitHub</a>
+                <span class="separator">|</span>
+                <a href="https://ko-fi.com/joe364671" target="_blank" class="donate-link">Donate</a>
+            </div>
+            <p class="footer-text">Made with passion for cybersecurity education</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+
+        const loginForm = document.getElementById('loginForm');
+        const loginButton = document.getElementById('loginButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        // Check if already logged in
+        if (authService.isAuthenticated()) {
+            window.location.href = 'quiz-menu.html';
+        }
+
+        // Handle form submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Clear previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Show loading state
+            loginButton.disabled = true;
+            loginButton.querySelector('.button-text').style.display = 'none';
+            loginButton.querySelector('.button-loader').style.display = 'inline-block';
+
+            try {
+                await authService.login(email, password);
+
+                // Show success message
+                successMessage.textContent = 'Login successful! Redirecting...';
+                successMessage.style.display = 'block';
+
+                // Redirect to quiz menu after short delay
+                setTimeout(() => {
+                    const redirectUrl = new URLSearchParams(window.location.search).get('redirect') || 'quiz-menu.html';
+                    window.location.href = redirectUrl;
+                }, 1000);
+
+            } catch (error) {
+                // Show error message
+                errorMessage.textContent = error.message || 'Login failed. Please try again.';
+                errorMessage.style.display = 'block';
+
+                // Reset button state
+                loginButton.disabled = false;
+                loginButton.querySelector('.button-text').style.display = 'inline';
+                loginButton.querySelector('.button-loader').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

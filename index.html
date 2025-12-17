@@ -33,8 +33,8 @@
             </div>
             <div class="center-content">
                 <div class="buttons">
-                    <a class="game-btn play-btn" href="quiz.html">Start<br>Random Quiz</a>
-                    <button class="game-btn info-btn" onclick="showAbout()">Sign Up for 800+ <br/>sy0-701 questions</button>
+                    <a class="game-btn play-btn" href="quiz.html">Start<br>Random Quiz<br><small style="font-size: 0.6rem;">(Domain 1.0 Only)</small></a>
+                    <a class="game-btn info-btn" href="signup.html">Sign Up<br>for ALL Domains<br><small style="font-size: 0.6rem;">(800+ Questions)</small></a>
                 </div>
             </div>
         </div>
@@ -52,6 +52,19 @@
             <p class="footer-text">Made with passion for cybersecurity education</p>
         </div>
     </footer>
-   
+
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+
+        // Check if user is authenticated
+        if (authService.isAuthenticated()) {
+            const user = authService.getUser();
+            // Update signup button to show "Go to Quiz Menu" for authenticated users
+            const infoBtn = document.querySelector('.info-btn');
+            infoBtn.href = 'quiz-menu.html';
+            infoBtn.innerHTML = `Welcome, ${user.firstName}!<br>Access All Domains<br><small style="font-size: 0.6rem;">(800+ Questions)</small>`;
+        }
+    </script>
+
 </body>
 </html>

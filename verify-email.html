@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email - My SY0-701 Study App</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/auth.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1>Verify Your Email</h1>
+                <p class="auth-subtitle">Enter the 6-digit code sent to <strong id="userEmail"></strong></p>
+
+                <form id="verifyForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="code">Verification Code</label>
+                        <input
+                            type="text"
+                            id="code"
+                            name="code"
+                            required
+                            maxlength="6"
+                            pattern="[0-9]{6}"
+                            placeholder="123456"
+                            autocomplete="one-time-code"
+                            class="code-input"
+                        >
+                        <small class="form-help">Code expires in 15 minutes</small>
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                    <button type="submit" class="auth-button" id="verifyButton">
+                        <span class="button-text">Verify Email</span>
+                        <span class="button-loader" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div class="resend-section">
+                        <p>Didn't receive the code?</p>
+                        <button type="button" class="resend-button" id="resendButton">
+                            Resend Code
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/cjmDevelop/CyberSecurity-QuizApp-SY0-701" target="_blank">GitHub</a>
+                <span class="separator">|</span>
+                <a href="https://ko-fi.com/joe364671" target="_blank" class="donate-link">Donate</a>
+            </div>
+            <p class="footer-text">Made with passion for cybersecurity education</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+
+        // Get email from URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+
+        if (!email) {
+            window.location.href = 'signup.html';
+        }
+
+        document.getElementById('userEmail').textContent = email;
+
+        const verifyForm = document.getElementById('verifyForm');
+        const verifyButton = document.getElementById('verifyButton');
+        const resendButton = document.getElementById('resendButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const codeInput = document.getElementById('code');
+
+        // Auto-focus on code input
+        codeInput.focus();
+
+        // Only allow numbers in code input
+        codeInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        // Handle form submission
+        verifyForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const code = codeInput.value.trim();
+
+            if (code.length !== 6) {
+                errorMessage.textContent = 'Please enter a 6-digit code';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Clear previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Show loading state
+            verifyButton.disabled = true;
+            verifyButton.querySelector('.button-text').style.display = 'none';
+            verifyButton.querySelector('.button-loader').style.display = 'inline-block';
+
+            try {
+                await authService.verifyEmail(email, code);
+
+                // Show success message
+                successMessage.textContent = 'Email verified! Redirecting to quiz menu...';
+                successMessage.style.display = 'block';
+
+                // Redirect to quiz menu after short delay
+                setTimeout(() => {
+                    window.location.href = 'quiz-menu.html';
+                }, 1500);
+
+            } catch (error) {
+                // Show error message
+                errorMessage.textContent = error.message || 'Verification failed. Please try again.';
+                errorMessage.style.display = 'block';
+
+                // Reset button state
+                verifyButton.disabled = false;
+                verifyButton.querySelector('.button-text').style.display = 'inline';
+                verifyButton.querySelector('.button-loader').style.display = 'none';
+            }
+        });
+
+        // Handle resend button
+        resendButton.addEventListener('click', async () => {
+            resendButton.disabled = true;
+            resendButton.textContent = 'Sending...';
+
+            // Clear messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            try {
+                await authService.resendVerificationEmail(email);
+
+                successMessage.textContent = 'Verification code resent! Check your email.';
+                successMessage.style.display = 'block';
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    resendButton.disabled = false;
+                    resendButton.textContent = 'Resend Code';
+                }, 3000);
+
+            } catch (error) {
+                errorMessage.textContent = error.message || 'Failed to resend code. Please try again.';
+                errorMessage.style.display = 'block';
+
+                resendButton.disabled = false;
+                resendButton.textContent = 'Resend Code';
+            }
+        });
+    </script>
+</body>
+</html>

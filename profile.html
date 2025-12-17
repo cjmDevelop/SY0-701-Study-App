@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - My SY0-701 Study App</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/auth.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container" style="max-width: 600px;">
+            <div class="auth-card">
+                <h1>My Profile</h1>
+                <p class="auth-subtitle">View and manage your account</p>
+
+                <div class="profile-info" style="margin-bottom: 2rem;">
+                    <div class="info-row" style="padding: 1rem; background: #f5f5f5; border-radius: 8px; margin-bottom: 1rem;">
+                        <label style="font-weight: 700; color: #666; font-size: 0.85rem;">Name</label>
+                        <p id="userName" style="font-size: 1.1rem; color: #333; margin-top: 0.3rem;"></p>
+                    </div>
+
+                    <div class="info-row" style="padding: 1rem; background: #f5f5f5; border-radius: 8px; margin-bottom: 1rem;">
+                        <label style="font-weight: 700; color: #666; font-size: 0.85rem;">Email</label>
+                        <p id="userEmail" style="font-size: 1.1rem; color: #333; margin-top: 0.3rem;"></p>
+                    </div>
+
+                    <div class="info-row" style="padding: 1rem; background: #f5f5f5; border-radius: 8px; margin-bottom: 1rem;">
+                        <label style="font-weight: 700; color: #666; font-size: 0.85rem;">Phone</label>
+                        <p id="userPhone" style="font-size: 1.1rem; color: #333; margin-top: 0.3rem;"></p>
+                    </div>
+
+                    <div class="info-row" style="padding: 1rem; background: #f5f5f5; border-radius: 8px; margin-bottom: 1rem;">
+                        <label style="font-weight: 700; color: #666; font-size: 0.85rem;">Account Status</label>
+                        <p id="userStatus" style="font-size: 1.1rem; margin-top: 0.3rem;"></p>
+                    </div>
+
+                    <div class="info-row" style="padding: 1rem; background: #f5f5f5; border-radius: 8px; margin-bottom: 1rem;">
+                        <label style="font-weight: 700; color: #666; font-size: 0.85rem;">Role</label>
+                        <p id="userRole" style="font-size: 1.1rem; color: #333; margin-top: 0.3rem;"></p>
+                    </div>
+                </div>
+
+                <div class="profile-actions" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <button onclick="window.location.href='quiz-menu.html'" class="auth-button" style="background: #4a00e0;">
+                        Go to Quiz Menu
+                    </button>
+
+                    <button id="logoutButton" class="auth-button" style="background: #666;">
+                        Logout
+                    </button>
+
+                    <button id="deleteAccountButton" class="auth-button" style="background: #c62828;">
+                        Delete Account
+                    </button>
+                </div>
+
+                <div id="errorMessage" class="error-message" style="display: none; margin-top: 1rem;"></div>
+                <div id="successMessage" class="success-message" style="display: none; margin-top: 1rem;"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/cjmDevelop/CyberSecurity-QuizApp-SY0-701" target="_blank">GitHub</a>
+                <span class="separator">|</span>
+                <a href="https://ko-fi.com/joe364671" target="_blank" class="donate-link">Donate</a>
+            </div>
+            <p class="footer-text">Made with passion for cybersecurity education</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+        import { updateNavigation } from './src/scripts/navigation.js';
+
+        // Update navigation
+        updateNavigation();
+
+        // Check if user is authenticated
+        if (!authService.isAuthenticated()) {
+            window.location.href = 'login.html';
+        }
+
+        // Get user info
+        const user = authService.getUser();
+
+        // Display user info
+        document.getElementById('userName').textContent = `${user.firstName} ${user.lastName || ''}`.trim();
+        document.getElementById('userEmail').textContent = user.email;
+        document.getElementById('userPhone').textContent = user.phoneNumber || 'Not provided';
+        document.getElementById('userRole').textContent = user.role;
+
+        // Display account status
+        const statusElement = document.getElementById('userStatus');
+        if (user.emailVerified) {
+            statusElement.innerHTML = '<span style="color: #2e7d32;">✓ Verified</span>';
+        } else {
+            statusElement.innerHTML = '<span style="color: #f57c00;">⚠ Email not verified</span>';
+        }
+
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        // Handle logout
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            authService.logout();
+            window.location.href = 'index.html';
+        });
+
+        // Handle delete account
+        document.getElementById('deleteAccountButton').addEventListener('click', async () => {
+            const confirmed = confirm(
+                'Are you sure you want to delete your account? This action cannot be undone.\n\n' +
+                'All your quiz progress and data will be permanently deleted.'
+            );
+
+            if (!confirmed) return;
+
+            const password = prompt('Please enter your password to confirm account deletion:');
+
+            if (!password) return;
+
+            try {
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+
+                await authService.deleteAccount(user.email, password);
+
+                successMessage.textContent = 'Account deleted successfully. Redirecting...';
+                successMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+
+            } catch (error) {
+                errorMessage.textContent = error.message || 'Failed to delete account. Please try again.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

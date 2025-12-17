@@ -93,6 +93,20 @@
         </div>
     </footer>
 
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+        import { updateNavigation } from './src/scripts/navigation.js';
+
+        // Update navigation
+        updateNavigation();
+
+        // Authentication guard - redirect if not authenticated
+        if (!authService.isAuthenticated()) {
+            alert('Please sign up or login to access all domains!');
+            window.location.href = 'signup.html';
+        }
+    </script>
+
     <script type="module" src="src/scripts/quiz-info.js"></script>
     <script type="module" src="src/scripts/total.js"></script>
     <script type="module" src="src/scripts/og-script-copy.js"></script>

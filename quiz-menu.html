@@ -153,6 +153,90 @@
         </div>
     </footer>
 
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+        import { updateNavigation } from './src/scripts/navigation.js';
+
+        // Update navigation
+        updateNavigation();
+
+        // Check if user is authenticated
+        const isAuthenticated = authService.isAuthenticated();
+
+        if (!isAuthenticated) {
+            // Lock domains 2-5 for non-authenticated users
+            const lockedDomains = document.querySelectorAll('.box-item:not(:first-child)');
+
+            lockedDomains.forEach(domain => {
+                // Add locked styling
+                domain.style.position = 'relative';
+                domain.style.opacity = '0.6';
+                domain.style.cursor = 'not-allowed';
+
+                // Prevent clicking
+                domain.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                // Find the flip-box-back and update the button
+                const flipBoxBack = domain.querySelector('.flip-box-back .inner');
+                if (flipBoxBack) {
+                    const startLink = flipBoxBack.querySelector('.flip-box-button');
+                    if (startLink) {
+                        startLink.href = 'signup.html';
+                        startLink.textContent = 'Sign Up to Unlock';
+                        startLink.style.background = '#ff6b6b';
+                        startLink.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                        });
+                    }
+                }
+
+                // Add lock overlay
+                const lockOverlay = document.createElement('div');
+                lockOverlay.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 10;
+                    background: rgba(0, 0, 0, 0.7);
+                    padding: 1rem;
+                    border-radius: 50%;
+                    pointer-events: none;
+                `;
+                lockOverlay.innerHTML = `
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#fff">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+                    </svg>
+                `;
+                domain.appendChild(lockOverlay);
+            });
+
+            // Add sign-up banner
+            const main = document.querySelector('main');
+            const banner = document.createElement('div');
+            banner.style.cssText = `
+                max-width: 1400px;
+                margin: 2rem auto;
+                padding: 2rem;
+                background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            `;
+            banner.innerHTML = `
+                <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">Unlock All 800+ Questions!</h2>
+                <p style="color: white; font-size: 1.1rem; margin-bottom: 1.5rem;">Sign up now to access all 5 domains and maximize your SY0-701 exam prep</p>
+                <a href="signup.html" style="display: inline-block; padding: 1rem 2rem; background: white; color: #ff6b6b; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease;">
+                    Sign Up Free
+                </a>
+            `;
+            main.appendChild(banner);
+        }
+    </script>
+
     <script type="module" src="src/scripts/total.js"></script>
     <script type="module" src="src/scripts/og-script-copy.js"></script>
 </body>

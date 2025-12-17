@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - My SY0-701 Study App</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/auth.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1>Create Account</h1>
+                <p class="auth-subtitle">Sign up to access 800+ SY0-701 practice questions</p>
+
+                <form id="signupForm" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                required
+                                placeholder="John"
+                                autocomplete="given-name"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Doe"
+                                autocomplete="family-name"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            minlength="8"
+                            placeholder="At least 8 characters"
+                            autocomplete="new-password"
+                        >
+                        <small class="form-help">Minimum 8 characters</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number (Optional)</label>
+                        <input
+                            type="tel"
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            placeholder="+14155552671"
+                            autocomplete="tel"
+                        >
+                        <small class="form-help">Include country code (e.g., +1 for US)</small>
+                    </div>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                    <button type="submit" class="auth-button" id="signupButton">
+                        <span class="button-text">Create Account</span>
+                        <span class="button-loader" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/cjmDevelop/CyberSecurity-QuizApp-SY0-701" target="_blank">GitHub</a>
+                <span class="separator">|</span>
+                <a href="https://ko-fi.com/joe364671" target="_blank" class="donate-link">Donate</a>
+            </div>
+            <p class="footer-text">Made with passion for cybersecurity education</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import authService from './src/scripts/auth.js';
+
+        const signupForm = document.getElementById('signupForm');
+        const signupButton = document.getElementById('signupButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        // Check if already logged in
+        if (authService.isAuthenticated()) {
+            window.location.href = 'quiz-menu.html';
+        }
+
+        // Handle form submission
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const phoneNumber = document.getElementById('phoneNumber').value.trim() || null;
+
+            // Validate phone number format if provided
+            if (phoneNumber && !phoneNumber.match(/^\+?[1-9]\d{1,14}$/)) {
+                errorMessage.textContent = 'Please enter a valid phone number with country code (e.g., +14155552671)';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Clear previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Show loading state
+            signupButton.disabled = true;
+            signupButton.querySelector('.button-text').style.display = 'none';
+            signupButton.querySelector('.button-loader').style.display = 'inline-block';
+
+            try {
+                await authService.register(email, password, firstName, lastName, phoneNumber);
+
+                // Show success message
+                successMessage.textContent = 'Account created! Check your email for verification code.';
+                successMessage.style.display = 'block';
+
+                // Redirect to verification page after short delay
+                setTimeout(() => {
+                    window.location.href = `verify-email.html?email=${encodeURIComponent(email)}`;
+                }, 2000);
+
+            } catch (error) {
+                // Show error message
+                errorMessage.textContent = error.message || 'Registration failed. Please try again.';
+                errorMessage.style.display = 'block';
+
+                // Reset button state
+                signupButton.disabled = false;
+                signupButton.querySelector('.button-text').style.display = 'inline';
+                signupButton.querySelector('.button-loader').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
