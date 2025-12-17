@@ -1,7 +1,7 @@
 export const threatActorsAndMotivationsQuiz = [
     {
     quiz_ID: 2.1,
-    quiz_name: "2.0 - 2.1 Common threat actors and motivations"
+    quiz_name: "Threat Actors and Motivations"
   },
 
   // 2.1 Threat Actors and Motivations (40 questions)

@@ -1,7 +1,7 @@
 export const vulnerabilitiesQuiz = [
      {
     quiz_ID: 2.3,
-    quiz_name: "2.3 - Various types of vulnerabilities"
+    quiz_name: "Various Types of Vulnerabilities"
   },
 {
     question: "What application vulnerability allows attackers to insert malicious code into memory?",

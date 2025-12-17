@@ -1,7 +1,7 @@
 export const indicatorsOfMaliciousActivityQuiz = [
        {
     quiz_ID: 2.4,
-    quiz_name: "2.4 - Analyze indicators of malicious activity"
+    quiz_name: "Indicators of Malicious Activity"
   },
 
  // 2.4 Indicators of Malicious Activity (45 questions)

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain 5.0 - Security Program Management and Oversight</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/sub-menu.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="#" onclick="alert('About page coming soon!')">About</a>
+            <a href="#" onclick="alert('Contact page coming soon!')">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="quiz-menu.html">← Back to Quiz Menu</a>
+            <span>/</span>
+            <span style="color: #fff;">Domain 5.0</span>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="domain-number">5.0</div>
+            <h1>Security Program Management and Oversight</h1>
+            <p>Manage security governance, risk, compliance, audits, and security awareness programs</p>
+            <span class="exam-weight">20% of Exam</span>
+            <span id="chapter-five-total" style="display: none;"></span>
+        </div>
+
+        <!-- Quiz Cards Grid -->
+        <div class="submenu-grid">
+            <!-- Quiz 5.1-5.2 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=5.1'">
+                <div class="quiz-number" id="five-dot-one-quiz-id"></div>
+                <h3 id="five-dot-one-quiz-name"></h3>
+                <p class="quiz-description">
+                    Summarize security governance elements and explain the risk management process including identification, assessment, and response
+                </p>
+                <div class="quiz-info">
+                    <span id="five-dot-one-total" class="question-count"></span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 5.3 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=5.3'">
+                <div class="quiz-number" id="five-dot-three-quiz-id"></div>
+                <h3 id="five-dot-three-quiz-name"></h3>
+                <p class="quiz-description">
+                    Explain third-party risk assessment and management processes including vendor selection, monitoring, and supply chain security
+                </p>
+                <div class="quiz-info">
+                    <span class="question-count" id="five-dot-three-total"></span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 5.4-5.6 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=5.4'">
+                <div class="quiz-number" id="five-dot-four-quiz-id"></div>
+                <h3 id="five-dot-four-quiz-name"></h3>
+                <p class="quiz-description">
+                    Summarize security compliance elements, explain audit types and purposes, and implement security awareness practices
+                </p>
+                <div class="quiz-info">
+                    <span class="question-count" id="five-dot-four-total"></span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="src/scripts/quiz-info.js"></script>
+    <script type="module" src="src/scripts/total.js"></script>
+    <script type="module" src="src/scripts/og-script-copy.js"></script>
+</body>
+</html>

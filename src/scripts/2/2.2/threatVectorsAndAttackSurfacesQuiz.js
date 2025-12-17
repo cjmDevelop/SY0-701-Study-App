@@ -1,7 +1,7 @@
 export const threatVectorsAndAttackSurfacesQuiz = [
      {
-    quiz_ID: 2.2,
-    quiz_name: "2.2 - Common threat vectors and attack surfaces"
+    quiz_ID: "2.2",
+    quiz_name: "Threat Vectors and Attack Surfaces"
   },
 
  {

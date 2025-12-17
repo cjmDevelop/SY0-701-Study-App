@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain 2.0 - Threats, Vulnerabilities, and Mitigations</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/sub-menu.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="#" onclick="alert('About page coming soon!')">About</a>
+            <a href="#" onclick="alert('Contact page coming soon!')">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="quiz-menu.html">← Back to Quiz Menu</a>
+            <span>/</span>
+            <span style="color: #fff;">Domain 2.0</span>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="domain-number">2.0</div>
+            <h1>Threats, Vulnerabilities, and Mitigations</h1>
+            <p>Identify and analyze threats, vulnerabilities, and mitigation strategies</p>
+            <span class="exam-weight">22% of Exam</span>
+            <span id="chapter-two-total" style="display: none;"></span>
+        </div>
+
+        <!-- Quiz Cards Grid -->
+        <div class="submenu-grid">
+            <!-- Quiz 2.1 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=2.1'">
+                <div class="quiz-number" id="two-dot-one-quiz-id"></div>
+                <h3 id="two-dot-one-quiz-name"></h3>
+                <p class="quiz-description">
+                    Compare and contrast common threat actors and motivations
+                </p>
+                <div class="quiz-info">
+                    <span id="two-dot-one-total" class="question-count"></span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 2.2 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=2.2'">
+                <div class="quiz-number" id="two-dot-two-quiz-id"></div>
+                <h3 id="two-dot-two-quiz-name"></h3>
+                <p class="quiz-description">
+                    Explain common threat vectors and attack surfaces
+                </p>
+                <div class="quiz-info">
+                    <span class="question-count" id="two-dot-two-total"></span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 2.3 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=2.3'">
+                <div class="quiz-number" id="two-dot-three-quiz-id"></div>
+                <h3 id="two-dot-three-quiz-name"></h3>
+                <p class="quiz-description">
+                    Explain various types of vulnerabilities
+                </p>
+                <div class="quiz-info">
+                    <span class="question-count" id="two-dot-three-total"></span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 2.4 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=2.4'">
+                <div class="quiz-number" id="two-dot-four-quiz-id"></div>
+                <h3 id="two-dot-four-quiz-name"></h3>
+                <p class="quiz-description">
+                    Analyze indicators of malicious activity
+                </p>
+                <div class="quiz-info">
+                    <span class="question-count" id="two-dot-four-total"></span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 2.5 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=2.5'">
+                <div class="quiz-number" id="two-dot-five-quiz-id"></div>
+                <h3 id="two-dot-five-quiz-name"></h3>
+                <p class="quiz-description">
+                    Explain the purpose of mitigation techniques used to secure the enterprise
+                </p>
+                <div class="quiz-info">
+                    <span class="question-count" id="two-dot-five-total"></span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="src/scripts/quiz-info.js"></script>
+    <script type="module" src="src/scripts/total.js"></script>
+    <script type="module" src="src/scripts/og-script-copy.js"></script>
+</body>
+</html>

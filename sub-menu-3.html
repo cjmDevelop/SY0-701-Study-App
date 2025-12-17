@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain 3.0 - Security Architecture</title>
+    <link rel="icon" href="quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+    <link rel="stylesheet" href="src/styles/sub-menu.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">My SY0-701 Study App</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="quiz-menu.html">Quiz Menu</a>
+            <a href="#" onclick="alert('About page coming soon!')">About</a>
+            <a href="#" onclick="alert('Contact page coming soon!')">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="quiz-menu.html">← Back to Quiz Menu</a>
+            <span>/</span>
+            <span style="color: #fff;">Domain 3.0</span>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="domain-number">3.0</div>
+            <h1>Security Architecture</h1>
+            <p>Compare and contrast security implications of different architecture models</p>
+            <span class="exam-weight">18% of Exam</span>
+        </div>
+
+        <!-- Quiz Cards Grid -->
+        <div class="submenu-grid">
+            <!-- Quiz 3.1 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=3.1'">
+                <div class="quiz-number" id="three-dot-one-quiz-id"></div>
+                <h3 id="three-dot-one-quiz-name"></h3>
+                <p class="quiz-description">
+                    Cloud architecture, serverless, microservices, on-premises, and centralized vs decentralized models
+                </p>
+                <div class="quiz-info">
+                    <span id="three-dot-one-total" class="question-count"></span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 3.2 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=3.2'">
+                <div class="quiz-number" id="three-dot-two-quiz-id"></div>
+                <h3 id="three-dot-two-quiz-name"></h3>
+                <p class="quiz-description">
+                    Infrastructure as Code, network infrastructure, air-gapping, SDN, containerization, and virtualization
+                </p>
+                <div class="quiz-info">
+                    <span id="three-dot-two-total" class="question-count"></span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 3.3 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=3.3'">
+                <div class="quiz-number" id="three-dot-three-quiz-id"></div>
+                <h3 id="three-dot-three-quiz-name"></h3>
+                <p class="quiz-description">
+                    IoT devices, ICS/SCADA systems, RTOS, embedded systems, and high availability architectures
+                </p>
+                <div class="quiz-info">
+                    <span id="three-dot-three-total" class="question-count"></span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz 3.4 -->
+            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=3.4'">
+                <div class="quiz-number" id="three-dot-four-quiz-id"></div>
+                <h3 id="three-dot-four-quiz-name"></h3>
+                <p class="quiz-description">
+                    Resilience, availability, scalability, risk transference, recovery objectives, and architecture trade-offs
+                </p>
+                <div class="quiz-info">
+                    <span id="three-dot-four-total" class="question-count"></span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <button class="start-btn">Start Quiz</button>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="src/scripts/quiz-info.js"></script>
+    <script type="module" src="src/scripts/total.js"></script>
+    <script type="module" src="src/scripts/og-script-copy.js"></script>
+</body>
+</html>

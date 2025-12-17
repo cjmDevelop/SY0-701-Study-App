@@ -1,7 +1,7 @@
 export const securityArchitectureQuiz = [
       {
-    quiz_ID: 3.1,
-    quiz_name: "3.1 - Compare and contrast security implications of diffrent architecture models"
+    quiz_ID: "3.1-3.4",
+    quiz_name: "Security Architecture (Comprehensive)"
   },
   // === CLOUD ARCHITECTURE ===
   

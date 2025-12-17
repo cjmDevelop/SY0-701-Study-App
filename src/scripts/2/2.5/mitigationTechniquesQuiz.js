@@ -1,7 +1,7 @@
 export const mitigationTechniquesQuiz = [
   {
-    quiz_ID: 2.5,
-    quiz_name: "2.5 - Mitigation techniques used to secure the enterprise"
+    quiz_ID: "2.5",
+    quiz_name: "Mitigation Techniques"
   },
 
  // 2.5 Mitigation Techniques (30 questions)
