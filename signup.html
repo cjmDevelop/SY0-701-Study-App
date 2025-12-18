@@ -160,16 +160,28 @@
             signupButton.querySelector('.button-loader').style.display = 'inline-block';
 
             try {
-                await authService.register(email, password, firstName, lastName, phoneNumber);
+                const response = await authService.register(email, password, firstName, lastName, phoneNumber);
 
-                // Show success message
-                successMessage.textContent = 'Account created! Check your email for verification code.';
-                successMessage.style.display = 'block';
+                // Check if user is already logged in (dev mode returns tokens immediately)
+                if (response.accessToken) {
+                    // DEV MODE: User is auto-verified and logged in
+                    successMessage.textContent = 'Account created and verified! Redirecting...';
+                    successMessage.style.display = 'block';
 
-                // Redirect to verification page after short delay
-                setTimeout(() => {
-                    window.location.href = `verify-email.html?email=${encodeURIComponent(email)}`;
-                }, 2000);
+                    // Redirect to quiz menu
+                    setTimeout(() => {
+                        window.location.href = 'quiz-menu.html';
+                    }, 1500);
+                } else {
+                    // PRODUCTION MODE: Need email verification
+                    successMessage.textContent = 'Account created! Check your email for verification code.';
+                    successMessage.style.display = 'block';
+
+                    // Redirect to verification page
+                    setTimeout(() => {
+                        window.location.href = `verify-email.html?email=${encodeURIComponent(email)}`;
+                    }, 2000);
+                }
 
             } catch (error) {
                 // Show error message

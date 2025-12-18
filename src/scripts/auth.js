@@ -37,8 +37,15 @@ class AuthService {
                 throw new Error(data.error || 'Registration failed');
             }
 
-            // Store user info but no tokens yet (need to verify email first)
-            localStorage.setItem('pendingUser', JSON.stringify(data.user));
+            // Check if tokens are returned (dev mode auto-verify)
+            if (data.accessToken && data.refreshToken) {
+                // DEV MODE: Tokens returned, save them and log user in
+                this.setAuthData(data);
+                localStorage.removeItem('pendingUser');
+            } else {
+                // PRODUCTION MODE: No tokens yet, need to verify email first
+                localStorage.setItem('pendingUser', JSON.stringify(data.user));
+            }
 
             return data;
         } catch (error) {
@@ -152,7 +159,8 @@ class AuthService {
      */
     async refreshAccessToken() {
         try {
-            if (!this.refreshToken) {
+            const refreshToken = localStorage.getItem('refreshToken');
+            if (!refreshToken) {
                 throw new Error('No refresh token available');
             }
 
@@ -161,7 +169,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ refreshToken: this.refreshToken }),
+                body: JSON.stringify({ refreshToken }),
             });
 
             const data = await response.json();
@@ -186,7 +194,11 @@ class AuthService {
      * Check if user is authenticated
      */
     isAuthenticated() {
-        if (!this.accessToken || !this.user) {
+        // Always read from localStorage (source of truth)
+        const accessToken = localStorage.getItem('accessToken');
+        const user = localStorage.getItem('user');
+
+        if (!accessToken || !user) {
             return false;
         }
 
@@ -206,14 +218,17 @@ class AuthService {
      * Get current user
      */
     getUser() {
-        return this.user;
+        // Always read from localStorage (source of truth)
+        const userStr = localStorage.getItem('user');
+        return userStr ? JSON.parse(userStr) : null;
     }
 
     /**
      * Get access token
      */
     getAccessToken() {
-        return this.accessToken;
+        // Always read from localStorage (source of truth)
+        return localStorage.getItem('accessToken');
     }
 
     /**
@@ -325,11 +340,12 @@ class AuthService {
      */
     async deleteAccount(email, password) {
         try {
+            const accessToken = localStorage.getItem('accessToken');
             const response = await fetch(`${API_BASE_URL}/account`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.accessToken}`,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
                 body: JSON.stringify({ email, password }),
             });
@@ -378,12 +394,13 @@ class AuthService {
                 await this.refreshAccessToken();
             }
 
+            const accessToken = localStorage.getItem('accessToken');
             const response = await fetch(url, {
                 ...options,
                 headers: {
                     ...options.headers,
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.accessToken}`,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 
@@ -392,12 +409,13 @@ class AuthService {
                 await this.refreshAccessToken();
 
                 // Retry request with new token
+                const newAccessToken = localStorage.getItem('accessToken');
                 return await fetch(url, {
                     ...options,
                     headers: {
                         ...options.headers,
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${this.accessToken}`,
+                        'Authorization': `Bearer ${newAccessToken}`,
                     },
                 });
             }

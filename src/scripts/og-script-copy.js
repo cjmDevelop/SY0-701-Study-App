@@ -27,9 +27,10 @@ import { governanceAndRiskManagementQuiz } from './5/5.1-5.2/governanceAndRiskMa
 import { thirdPartyRiskQuiz } from './5/5.3/thirdPartyRiskQuiz.js'
 import { complianceAuditsAndAwarenessQuiz } from './5/5.4-5.6/complianceAuditsAndAwarenessQuiz.js'
 
-//Get Domain from URL
+//Get Domain and Mode from URL
 const urlParams = new URLSearchParams(window.location.search);
 const domain = urlParams.get('domain');
+const timedMode = urlParams.get('timed') === 'true';
 
 //Map domain to quiz data
 const quizMap = {
@@ -54,17 +55,17 @@ const quizMap = {
     '5.4': complianceAuditsAndAwarenessQuiz
 }
 
-// DOM Elements
-const quizContainer = document.getElementById('quiz');
-const resultContainer = document.getElementById('result');
-const submitButton = document.getElementById('submit');
-const retryButton = document.getElementById('retry');
-const showAnswerButton = document.getElementById('showAnswer');
-const backArrowButton = document.getElementById('back-arrow');
-const skipArrowButton = document.getElementById('skip-arrow');
-const popupA = document.getElementById('popup-a');
-const popupB = document.getElementById('popup-b');
-const skipWarning = document.getElementById('skip-warning');
+// DOM Elements - Will be initialized when DOM is ready
+let quizContainer;
+let resultContainer;
+let submitButton;
+let retryButton;
+let showAnswerButton;
+let backArrowButton;
+let skipArrowButton;
+let popupA;
+let popupB;
+let skipWarning;
 
 // Quiz state variables
 let currentQuiz = [];
@@ -76,6 +77,7 @@ let incorrectAnswers = [];
 let userAnswers = [];
 let timerInterval;
 let timerSeconds = 0;
+let timeLimit = 0; // Time limit in seconds for timed mode
 let hasSkippedOnce = false;
 
 // Shuffle function
@@ -88,20 +90,78 @@ function shuffleArray(array) {
 
 // Timer functions
 function startTimer() {
-  timerSeconds = 0;
-  timerInterval = setInterval(() => {
-    timerSeconds++;
-    const minutes = Math.floor(timerSeconds / 60);
-    const seconds = timerSeconds % 60;
-    document.getElementById('timer').textContent =
-      `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }, 1000);
+  if (timedMode) {
+    // Countdown timer for timed mode
+    const questionCount = currentQuiz.length - 1; // Minus 1 for metadata
+    timeLimit = Math.ceil(questionCount * 1.5 * 60); // 1.5 minutes per question in seconds
+    timerSeconds = timeLimit;
+
+    timerInterval = setInterval(() => {
+      timerSeconds--;
+      const minutes = Math.floor(timerSeconds / 60);
+      const seconds = timerSeconds % 60;
+      const timerElement = document.getElementById('timer');
+      timerElement.textContent =
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      // Visual warnings
+      if (timerSeconds <= 120) { // 2 minutes
+        timerElement.style.color = '#ff4444';
+        timerElement.style.fontWeight = 'bold';
+      } else if (timerSeconds <= 300) { // 5 minutes
+        timerElement.style.color = '#ffaa00';
+      }
+
+      // Time's up!
+      if (timerSeconds <= 0) {
+        stopTimer();
+        handleTimeExpired();
+      }
+    }, 1000);
+  } else {
+    // Count-up timer for practice mode
+    timerSeconds = 0;
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      const minutes = Math.floor(timerSeconds / 60);
+      const seconds = timerSeconds % 60;
+      document.getElementById('timer').textContent =
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }, 1000);
+  }
 }
 
 function stopTimer() {
   if (timerInterval) {
     clearInterval(timerInterval);
   }
+}
+
+function handleTimeExpired() {
+  // Play buzzer sound (browser beep)
+  try {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.frequency.value = 440; // A4 note
+    oscillator.type = 'square';
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.5); // 0.5 second beep
+  } catch (e) {
+    console.log('Audio not supported');
+  }
+
+  // Show time's up alert
+  alert("⏰ TIME'S UP! Your quiz will be submitted automatically.");
+
+  // Auto-submit quiz (mark unanswered as wrong)
+  showResult();
 }
 
 function loadQuiz() {
@@ -333,12 +393,36 @@ function skipQuestion() {
   }
 }
 
-// Event listeners
-submitButton.addEventListener('click', checkAnswer);
-retryButton.addEventListener('click', retryQuiz);
-showAnswerButton.addEventListener('click', showAnswer);
-backArrowButton.addEventListener('click', goBack);
-skipArrowButton.addEventListener('click', skipQuestion);
+// Initialize quiz when DOM is ready
+function initQuiz() {
+  // Get DOM elements
+  quizContainer = document.getElementById('quiz');
+  resultContainer = document.getElementById('result');
+  submitButton = document.getElementById('submit');
+  retryButton = document.getElementById('retry');
+  showAnswerButton = document.getElementById('showAnswer');
+  backArrowButton = document.getElementById('back-arrow');
+  skipArrowButton = document.getElementById('skip-arrow');
+  popupA = document.getElementById('popup-a');
+  popupB = document.getElementById('popup-b');
+  skipWarning = document.getElementById('skip-warning');
 
-// Initialize quiz
-loadQuiz();
+  // Event listeners - Only add if elements exist (quiz page only)
+  if (submitButton && retryButton && showAnswerButton && backArrowButton && skipArrowButton) {
+    submitButton.addEventListener('click', checkAnswer);
+    retryButton.addEventListener('click', retryQuiz);
+    showAnswerButton.addEventListener('click', showAnswer);
+    backArrowButton.addEventListener('click', goBack);
+    skipArrowButton.addEventListener('click', skipQuestion);
+
+    // Initialize quiz
+    loadQuiz();
+  }
+}
+
+// Run initialization
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initQuiz);
+} else {
+  initQuiz();
+}

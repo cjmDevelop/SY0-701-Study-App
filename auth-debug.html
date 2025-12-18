@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Auth Debug</title></head>
+<body>
+<h1>Authentication Debug</h1>
+<div id="output"></div>
+
+<script type="module">
+import authService from './src/scripts/auth.js';
+
+const output = document.getElementById('output');
+
+// Check authentication status
+const isAuth = authService.isAuthenticated();
+const user = authService.getUser();
+const token = authService.getAccessToken();
+
+const accessTokenExists = localStorage.getItem('accessToken');
+const refreshTokenExists = localStorage.getItem('refreshToken');
+const userExists = localStorage.getItem('user');
+const tokenExpiryExists = localStorage.getItem('tokenExpiry');
+
+output.innerHTML = `
+<h2>Auth Status: ${isAuth ? '✅ AUTHENTICATED' : '❌ NOT AUTHENTICATED'}</h2>
+<h3>LocalStorage Contents:</h3>
+<pre>
+accessToken: ${accessTokenExists ? 'EXISTS (length: ' + accessTokenExists.length + ')' : 'MISSING'}
+refreshToken: ${refreshTokenExists ? 'EXISTS' : 'MISSING'}
+user: ${userExists || 'MISSING'}
+tokenExpiry: ${tokenExpiryExists || 'MISSING'}
+</pre>
+
+<h3>User Object:</h3>
+<pre>${JSON.stringify(user, null, 2)}</pre>
+
+<h3>isAuthenticated() returned:</h3>
+<pre>${isAuth}</pre>
+`;
+</script>
+</body>
+</html>

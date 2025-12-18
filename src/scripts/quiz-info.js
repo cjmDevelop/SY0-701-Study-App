@@ -29,29 +29,46 @@ import { complianceAuditsAndAwarenessQuiz } from './5/5.4-5.6/complianceAuditsAn
 
 
 
+// Domain 1 Quiz Info
 const oneDotOneQuizID = document.getElementById('one-dot-one-quiz-id');
-      oneDotOneQuizID.textContent = securityControlsQuiz[0].quiz_ID;
+if (oneDotOneQuizID) {
+    oneDotOneQuizID.textContent = securityControlsQuiz[0].quiz_ID;
+}
 
 const oneDotOneQuizName = document.getElementById('one-dot-one-quiz-name');
-      oneDotOneQuizName.textContent = securityControlsQuiz[0].quiz_name;
+if (oneDotOneQuizName) {
+    oneDotOneQuizName.textContent = securityControlsQuiz[0].quiz_name;
+}
 
 const oneDotTwoQuizID = document.getElementById('one-dot-two-quiz-id');
-      oneDotTwoQuizID.textContent = fundamentalSecurityConceptsQuiz[0].quiz_ID;
-      
+if (oneDotTwoQuizID) {
+    oneDotTwoQuizID.textContent = fundamentalSecurityConceptsQuiz[0].quiz_ID;
+}
+
 const oneDotTwoQuizName = document.getElementById('one-dot-two-quiz-name');
-      oneDotTwoQuizName.textContent = fundamentalSecurityConceptsQuiz[0].quiz_name;
+if (oneDotTwoQuizName) {
+    oneDotTwoQuizName.textContent = fundamentalSecurityConceptsQuiz[0].quiz_name;
+}
 
 const oneDotThreeQuizID = document.getElementById('one-dot-three-quiz-id');
-      oneDotThreeQuizID.textContent = changeManagementProcessQuiz[0].quiz_ID;
+if (oneDotThreeQuizID) {
+    oneDotThreeQuizID.textContent = changeManagementProcessQuiz[0].quiz_ID;
+}
 
 const oneDotThreeQuizName = document.getElementById('one-dot-three-quiz-name');
-      oneDotThreeQuizName.textContent = changeManagementProcessQuiz[0].quiz_name;
+if (oneDotThreeQuizName) {
+    oneDotThreeQuizName.textContent = changeManagementProcessQuiz[0].quiz_name;
+}
 
 const oneDotFourQuizID = document.getElementById('one-dot-four-quiz-id');
-      oneDotFourQuizID.textContent = cryptographicQuiz[0].quiz_ID;
+if (oneDotFourQuizID) {
+    oneDotFourQuizID.textContent = cryptographicQuiz[0].quiz_ID;
+}
 
 const oneDotFourQuizName = document.getElementById('one-dot-four-quiz-name');
-      oneDotFourQuizName.textContent = cryptographicQuiz[0].quiz_name;
+if (oneDotFourQuizName) {
+    oneDotFourQuizName.textContent = cryptographicQuiz[0].quiz_name;
+}
 
 // Domain 2 Quiz Info
 const twoDotOneQuizID = document.getElementById('two-dot-one-quiz-id');

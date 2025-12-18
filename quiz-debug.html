@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Debug</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #000; color: #fff; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .good { background: #2ecc71; }
+        .bad { background: #e74c3c; }
+        pre { background: #222; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Quiz Debug Tool</h1>
+    <div id="output"></div>
+
+    <script type="module">
+        const output = document.getElementById('output');
+        let html = '';
+
+        // Check URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const domain = urlParams.get('domain');
+        html += `<div class="status ${domain ? 'good' : 'bad'}">Domain Parameter: ${domain || 'MISSING - This is the problem!'}</div>`;
+
+        // Check if quiz page elements would exist
+        html += `<h2>Expected Elements on Quiz Page:</h2>`;
+        html += `<pre>Submit Button: #submit
+Retry Button: #retry
+Show Answer: #showAnswer
+Back Arrow: #back-arrow
+Skip Arrow: #skip-arrow</pre>`;
+
+        html += `<h2>To Fix:</h2>`;
+        html += `<p>When you click "Start" on a quiz, the URL should look like:<br>
+        <code>quiz.html?domain=1.1</code> or <code>quiz.html?domain=2.1</code></p>`;
+
+        html += `<p>Check if the links on your sub-menu pages have the correct URLs.</p>`;
+
+        output.innerHTML = html;
+    </script>
+</body>
+</html>

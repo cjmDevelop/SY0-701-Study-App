@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Quiz Data</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #111; color: #fff; }
+        pre { background: #222; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .error { color: #ff5555; }
+        .success { color: #55ff55; }
+    </style>
+</head>
+<body>
+    <h1>Quiz Data Test</h1>
+    <div id="output"></div>
+
+    <script type="module">
+        const output = document.getElementById('output');
+        let html = '<h2>Testing Quiz Imports...</h2>';
+
+        try {
+            // Test Domain 2 import
+            const module = await import('./src/scripts/2/2.0-2.1/threatActorsAndMotivationsQuiz.js');
+            const quiz = module.threatActorsAndMotivationsQuiz;
+
+            html += '<div class="success">✅ Import successful!</div>';
+            html += '<h3>Quiz Data:</h3>';
+            html += '<pre>' + JSON.stringify(quiz[0], null, 2) + '</pre>';
+            html += '<p>Total questions: ' + (quiz.length - 1) + '</p>';
+
+        } catch (error) {
+            html += '<div class="error">❌ Import failed!</div>';
+            html += '<pre>' + error.toString() + '</pre>';
+        }
+
+        output.innerHTML = html;
+    </script>
+</body>
+</html>

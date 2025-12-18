@@ -50,11 +50,21 @@ function getChapterOneTotal() {
  cryptographicQuizAmount; 
 }
 
-chapterOneTotal.textContent = getChapterOneTotal();
-oneDotOneTotal.textContent = securityControlsQuizAmount + " Questions";
-oneDotTwoTotal.textContent = fundamentalSecurityConceptsQuizAmount + " Questions"
-oneDotThreeTotal.textContent = changeManagementProcessQuizAmount + " Questions";
-oneDotFourTotal.textContent = cryptographicQuizAmount + " Questions"
+if (chapterOneTotal) {
+    chapterOneTotal.textContent = getChapterOneTotal();
+}
+if (oneDotOneTotal) {
+    oneDotOneTotal.textContent = securityControlsQuizAmount + " Questions";
+}
+if (oneDotTwoTotal) {
+    oneDotTwoTotal.textContent = fundamentalSecurityConceptsQuizAmount + " Questions";
+}
+if (oneDotThreeTotal) {
+    oneDotThreeTotal.textContent = changeManagementProcessQuizAmount + " Questions";
+}
+if (oneDotFourTotal) {
+    oneDotFourTotal.textContent = cryptographicQuizAmount + " Questions";
+}
 
 
 

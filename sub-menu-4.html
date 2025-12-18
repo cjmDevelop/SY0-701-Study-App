@@ -37,7 +37,7 @@
         <!-- Quiz Cards Grid -->
         <div class="submenu-grid">
             <!-- Quiz 4.1-4.2 -->
-            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=4.1'">
+            <div class="quiz-card">
                 <div class="quiz-number" id="four-dot-one-quiz-id"></div>
                 <h3 id="four-dot-one-quiz-name"></h3>
                 <p class="quiz-description">
@@ -47,11 +47,14 @@
                     <span id="four-dot-one-total" class="question-count"></span>
                     <span class="difficulty hard">Hard</span>
                 </div>
-                <button class="start-btn">Start Quiz</button>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="start-btn" onclick="window.location.href='quiz.html?domain=4.1'" style="background: #4ecdc4;">Practice</button>
+                    <button class="start-btn" onclick="window.location.href='quiz.html?domain=4.1&timed=true'" style="background: #ff6b6b;">Timed ⏱️</button>
+                </div>
             </div>
 
             <!-- Quiz 4.3-4.5 -->
-            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=4.3'">
+            <div class="quiz-card">
                 <div class="quiz-number" id="four-dot-three-quiz-id"></div>
                 <h3 id="four-dot-three-quiz-name"></h3>
                 <p class="quiz-description">
@@ -61,11 +64,14 @@
                     <span class="question-count" id="four-dot-three-total"></span>
                     <span class="difficulty hard">Hard</span>
                 </div>
-                <button class="start-btn">Start Quiz</button>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="start-btn" onclick="window.location.href='quiz.html?domain=4.3'" style="background: #4ecdc4;">Practice</button>
+                    <button class="start-btn" onclick="window.location.href='quiz.html?domain=4.3&timed=true'" style="background: #ff6b6b;">Timed ⏱️</button>
+                </div>
             </div>
 
             <!-- Quiz 4.6-4.9 -->
-            <div class="quiz-card" onclick="window.location.href='quiz.html?domain=4.6'">
+            <div class="quiz-card">
                 <div class="quiz-number" id="four-dot-six-quiz-id"></div>
                 <h3 id="four-dot-six-quiz-name"></h3>
                 <p class="quiz-description">
@@ -75,7 +81,10 @@
                     <span class="question-count" id="four-dot-six-total"></span>
                     <span class="difficulty hard">Hard</span>
                 </div>
-                <button class="start-btn">Start Quiz</button>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="start-btn" onclick="window.location.href='quiz.html?domain=4.6'" style="background: #4ecdc4;">Practice</button>
+                    <button class="start-btn" onclick="window.location.href='quiz.html?domain=4.6&timed=true'" style="background: #ff6b6b;">Timed ⏱️</button>
+                </div>
             </div>
         </div>
     </main>
@@ -94,17 +103,9 @@
     </footer>
 
     <script type="module">
-        import authService from './src/scripts/auth.js';
         import { updateNavigation } from './src/scripts/navigation.js';
-
         // Update navigation
         updateNavigation();
-
-        // Authentication guard - redirect if not authenticated
-        if (!authService.isAuthenticated()) {
-            alert('Please sign up or login to access all domains!');
-            window.location.href = 'signup.html';
-        }
     </script>
 
     <script type="module" src="src/scripts/quiz-info.js"></script>
