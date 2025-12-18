@@ -3,7 +3,7 @@
  * Handles all authentication API calls and token management
  */
 
-const API_BASE_URL = 'http://localhost:8080/api/auth';
+const API_BASE_URL = 'https://auth-microservice-stuf.onrender.com/api/auth';
 
 class AuthService {
     constructor() {

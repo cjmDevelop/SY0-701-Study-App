@@ -93,7 +93,7 @@ function startTimer() {
   if (timedMode) {
     // Countdown timer for timed mode
     const questionCount = currentQuiz.length - 1; // Minus 1 for metadata
-    timeLimit = Math.ceil(questionCount * 1.5 * 60); // 1.5 minutes per question in seconds
+    timeLimit = Math.ceil(questionCount * 1.0 * 60); // 1.0 minute per question in seconds
     timerSeconds = timeLimit;
 
     timerInterval = setInterval(() => {
@@ -328,6 +328,9 @@ function displayResult() {
       <p>Click "Show Answers" to review the questions you missed.</p>
     `;
   }
+
+  // Save quiz result to backend if user is authenticated
+  saveQuizResult(totalQuestions, score, timerSeconds);
 }
 
 function retryQuiz() {
@@ -418,6 +421,77 @@ function initQuiz() {
     // Initialize quiz
     loadQuiz();
   }
+}
+
+// Save quiz result to backend or localStorage
+async function saveQuizResult(totalQuestions, correctAnswers, timeTakenSeconds) {
+  const accessToken = localStorage.getItem('accessToken');
+  const percentage = (correctAnswers / totalQuestions) * 100;
+  const passed = percentage >= 70;
+
+  const resultData = {
+    quizDomain: domain,
+    totalQuestions: totalQuestions,
+    correctAnswers: correctAnswers,
+    percentage: percentage,
+    passed: passed,
+    timeTakenSeconds: timeLimit - timeTakenSeconds,
+    isTimed: timedMode,
+    completedAt: new Date().toISOString()
+  };
+
+  // If user is authenticated, save to backend
+  if (accessToken) {
+    const API_BASE_URL = 'https://auth-microservice-stuf.onrender.com/api';
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/quiz-results`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(resultData)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Quiz result saved to backend:', data);
+      } else {
+        console.error('Failed to save quiz result to backend:', response.status);
+      }
+    } catch (error) {
+      console.error('Error saving quiz result to backend:', error);
+    }
+  } else {
+    // User not authenticated, save to localStorage
+    saveQuizResultToLocalStorage(resultData);
+    console.log('Quiz result saved to localStorage:', resultData);
+  }
+}
+
+// Save quiz result to localStorage for non-authenticated users
+function saveQuizResultToLocalStorage(resultData) {
+  // Get existing results from localStorage
+  let localResults = JSON.parse(localStorage.getItem('localQuizResults') || '[]');
+
+  // Add new result
+  localResults.push(resultData);
+
+  // Keep only the best result for each quiz domain
+  const resultsByDomain = {};
+  localResults.forEach(result => {
+    const existing = resultsByDomain[result.quizDomain];
+    if (!existing || result.percentage > existing.percentage) {
+      resultsByDomain[result.quizDomain] = result;
+    }
+  });
+
+  // Convert back to array
+  const bestResults = Object.values(resultsByDomain);
+
+  // Save to localStorage
+  localStorage.setItem('localQuizResults', JSON.stringify(bestResults));
 }
 
 // Run initialization

@@ -402,3 +402,46 @@ main {
     display: none;
 }
 }
+
+/* Quiz Result Badges */
+.quiz-result-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: none;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.quiz-result-badge.passed {
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+    color: white;
+    border: 2px solid #2e7d32;
+}
+
+.quiz-result-badge.failed {
+    background: linear-gradient(135deg, #f44336, #ef5350);
+    color: white;
+    border: 2px solid #c62828;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Make quiz cards position relative for absolute badge positioning */
+.quiz-card {
+    position: relative;
+}
