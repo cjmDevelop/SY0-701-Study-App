@@ -50,7 +50,7 @@ dist/
 
 # Gatsby files
 .cache/
-public/
+# public/ - commented out so images can be deployed
 
 # Vuepress build output
 .vuepress/dist
