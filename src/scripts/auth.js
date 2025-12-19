@@ -27,7 +27,8 @@ class AuthService {
                     password,
                     firstName,
                     lastName,
-                    phoneNumber
+                    phoneNumber,
+                    appSource: 'SECPLUS_PREP'
                 }),
             });
 
