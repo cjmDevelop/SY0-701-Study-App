@@ -39,7 +39,7 @@
             </div>
             <div class="center-content">
                 <div class="buttons">
-                    <a class="game-btn play-btn" href="quiz.html?domain=1.1">Start<br>Random Quiz<br><small style="font-size: 0.6rem;">(Domain 1.1)</small></a>
+                    <a class="game-btn play-btn" id="random-quiz-btn" href="#">Start<br>Random Quiz<br><small style="font-size: 0.6rem;">(Domains 1.1-1.4)</small></a>
                     <a class="game-btn info-btn" href="signup.html">Sign Up<br>for ALL Domains<br><small style="font-size: 0.6rem;">(800+ Questions)</small></a>
                 </div>
             </div>
@@ -64,6 +64,16 @@
 
     <script type="module">
         import authService from './src/scripts/auth.js';
+
+        // Handle random quiz button click
+        const randomQuizBtn = document.getElementById('random-quiz-btn');
+        randomQuizBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Randomly select from domains 1.1, 1.2, 1.3, 1.4
+            const domains = ['1.1', '1.2', '1.3', '1.4'];
+            const randomDomain = domains[Math.floor(Math.random() * domains.length)];
+            window.location.href = `quiz.html?domain=${randomDomain}`;
+        });
 
         // Check if user is authenticated
         if (authService.isAuthenticated()) {

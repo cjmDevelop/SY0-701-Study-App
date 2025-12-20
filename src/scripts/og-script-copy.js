@@ -55,14 +55,6 @@ const quizMap = {
     '5.4': complianceAuditsAndAwarenessQuiz
 }
 
-// Debug logging
-console.log('=== Quiz Debug Info ===');
-console.log('Domain from URL:', domain);
-console.log('Timed mode:', timedMode);
-console.log('Quiz map keys:', Object.keys(quizMap));
-console.log('Quiz for domain ' + domain + ':', quizMap[domain]);
-console.log('securityControlsQuiz:', securityControlsQuiz);
-
 // DOM Elements - Will be initialized when DOM is ready
 let quizContainer;
 let resultContainer;
@@ -173,22 +165,13 @@ function handleTimeExpired() {
 }
 
 function loadQuiz() {
-    console.log('=== loadQuiz() called ===');
-    console.log('domain:', domain);
-    console.log('quizMap:', quizMap);
     currentQuiz = quizMap[domain];
-    console.log('currentQuiz:', currentQuiz);
 
     // Redirect to home if invalid
     if (!currentQuiz) {
-        console.error('ERROR: currentQuiz is undefined! Redirecting to index.html');
-        console.log('Available domains:', Object.keys(quizMap));
-        alert('ERROR: Quiz not found for domain "' + domain + '"\n\nCheck console for details.\n\nAvailable domains: ' + Object.keys(quizMap).join(', '));
         window.location.href = 'index.html';
         return;
     }
-
-    console.log('Quiz loaded successfully:', currentQuiz[0]);
 
     // Initialize user answers array
     userAnswers = new Array(currentQuiz.length - 1).fill(null);
