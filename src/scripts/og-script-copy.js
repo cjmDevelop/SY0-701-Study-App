@@ -183,6 +183,7 @@ function loadQuiz() {
     if (!currentQuiz) {
         console.error('ERROR: currentQuiz is undefined! Redirecting to index.html');
         console.log('Available domains:', Object.keys(quizMap));
+        alert('ERROR: Quiz not found for domain "' + domain + '"\n\nCheck console for details.\n\nAvailable domains: ' + Object.keys(quizMap).join(', '));
         window.location.href = 'index.html';
         return;
     }
