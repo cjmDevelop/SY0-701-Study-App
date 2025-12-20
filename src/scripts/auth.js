@@ -3,6 +3,8 @@
  * Handles all authentication API calls and token management
  */
 
+// For local testing, use localhost. For production, use Render URL
+// const API_BASE_URL = 'http://localhost:8080/api/auth';
 const API_BASE_URL = 'https://auth-microservice-stuf.onrender.com/api/auth';
 
 class AuthService {
