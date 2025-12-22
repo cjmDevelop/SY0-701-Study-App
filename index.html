@@ -16,7 +16,6 @@
             <span class="logo-tagline" style="font-size: 0.65rem; color: #4ecdc4; font-weight: 500; line-height: 1;">Free Study Tool for Security+ SY0-701</span>
         </div>
         <nav>
-            <a href="Login.html">Login</a>
             <a href="quiz-menu.html">Quiz Menu</a>
             <a href="about.html">About</a>
         </nav>
@@ -64,6 +63,10 @@
 
     <script type="module">
         import authService from './src/scripts/auth.js';
+        import { updateNavigation } from './src/scripts/navigation.js';
+
+        // Update navigation based on auth status
+        updateNavigation();
 
         // Handle random quiz button click
         const randomQuizBtn = document.getElementById('random-quiz-btn');
