@@ -82,10 +82,24 @@
     <script type="module">
         import authService from './src/scripts/auth.js';
 
-        // Get email from URL params
+        // Get email from URL params or localStorage
         const urlParams = new URLSearchParams(window.location.search);
-        const email = urlParams.get('email');
+        let email = urlParams.get('email');
 
+        // If no email in URL, check localStorage (for resend from login flow)
+        if (!email) {
+            const pendingUser = localStorage.getItem('pendingUser');
+            if (pendingUser) {
+                try {
+                    const userData = JSON.parse(pendingUser);
+                    email = userData.email;
+                } catch (e) {
+                    console.error('Error parsing pendingUser:', e);
+                }
+            }
+        }
+
+        // If still no email, redirect to signup
         if (!email) {
             window.location.href = 'signup.html';
         }

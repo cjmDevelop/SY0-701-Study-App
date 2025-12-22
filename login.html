@@ -58,6 +58,11 @@
                     <div id="errorMessage" class="error-message" style="display: none;"></div>
                     <div id="successMessage" class="success-message" style="display: none;"></div>
 
+                    <!-- Resend Verification Message -->
+                    <div id="resendVerification" style="display: none; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; font-weight: 600; text-align: center; background: rgba(255, 193, 7, 0.1); color: #f57c00; border: 2px solid rgba(255, 193, 7, 0.3);">
+                        Email not verified. <a href="#" id="resendLink" style="color: #e65100; text-decoration: underline; font-weight: 700; cursor: pointer;">Resend verification email</a>
+                    </div>
+
                     <button type="submit" class="auth-button" id="loginButton">
                         <span class="button-text">Login</span>
                         <span class="button-loader" style="display: none;">
@@ -95,6 +100,9 @@
         const loginButton = document.getElementById('loginButton');
         const errorMessage = document.getElementById('errorMessage');
         const successMessage = document.getElementById('successMessage');
+        const resendVerification = document.getElementById('resendVerification');
+        const resendLink = document.getElementById('resendLink');
+        let currentEmail = '';
 
         // Check if already logged in
         if (authService.isAuthenticated()) {
@@ -107,10 +115,12 @@
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            currentEmail = email;
 
             // Clear previous messages
             errorMessage.style.display = 'none';
             successMessage.style.display = 'none';
+            resendVerification.style.display = 'none';
 
             // Show loading state
             loginButton.disabled = true;
@@ -131,14 +141,64 @@
                 }, 1000);
 
             } catch (error) {
-                // Show error message
-                errorMessage.textContent = error.message || 'Login failed. Please try again.';
-                errorMessage.style.display = 'block';
+                const errorText = error.message || 'Login failed. Please try again.';
+
+                // Check if error is due to unverified email
+                if (errorText.toLowerCase().includes('verify') || errorText.toLowerCase().includes('not verified')) {
+                    resendVerification.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                } else {
+                    errorMessage.textContent = errorText;
+                    errorMessage.style.display = 'block';
+                    resendVerification.style.display = 'none';
+                }
 
                 // Reset button state
                 loginButton.disabled = false;
                 loginButton.querySelector('.button-text').style.display = 'inline';
                 loginButton.querySelector('.button-loader').style.display = 'none';
+            }
+        });
+
+        // Handle resend verification link click
+        resendLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            if (!currentEmail) {
+                errorMessage.textContent = 'Please enter your email first.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            try {
+                resendLink.textContent = 'Sending...';
+                resendLink.style.pointerEvents = 'none';
+
+                // Show loading state
+                loginButton.disabled = true;
+
+                await authService.resendVerificationEmail(currentEmail);
+
+                // Store email for verification page
+                localStorage.setItem('pendingUser', JSON.stringify({ email: currentEmail }));
+
+                // Show success message
+                successMessage.textContent = 'Verification email sent! Redirecting...';
+                successMessage.style.display = 'block';
+                resendVerification.style.display = 'none';
+
+                // Redirect to verification page
+                setTimeout(() => {
+                    window.location.href = 'verify-email.html';
+                }, 1000);
+
+            } catch (error) {
+                errorMessage.textContent = error.message || 'Failed to resend verification email.';
+                errorMessage.style.display = 'block';
+                resendVerification.style.display = 'none';
+                resendLink.textContent = 'Resend verification email';
+                resendLink.style.pointerEvents = 'auto';
+                loginButton.disabled = false;
             }
         });
     </script>
