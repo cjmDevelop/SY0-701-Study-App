@@ -67,7 +67,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, code }),
+                body: JSON.stringify({ email, code, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
@@ -99,7 +99,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
@@ -125,7 +125,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
@@ -244,7 +244,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
@@ -270,7 +270,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, code }),
+                body: JSON.stringify({ email, code, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
@@ -296,7 +296,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, code, newPassword }),
+                body: JSON.stringify({ email, code, newPassword, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
@@ -322,7 +322,7 @@ class AuthService {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email, appSource: 'SECPLUS_PREP' }),
             });
 
             const data = await response.json();
