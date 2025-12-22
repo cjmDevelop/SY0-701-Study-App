@@ -141,22 +141,30 @@
                 }, 1000);
 
             } catch (error) {
+                console.log('Login error:', error.message);
                 const errorText = error.message || 'Login failed. Please try again.';
 
                 // Check if error is due to unverified email
-                if (errorText.toLowerCase().includes('verify') || errorText.toLowerCase().includes('not verified')) {
+                const isVerificationError = errorText.toLowerCase().includes('verify') ||
+                                           errorText.toLowerCase().includes('not verified') ||
+                                           errorText.toLowerCase().includes('email is not verified');
+
+                if (isVerificationError) {
+                    // Definitely an email verification issue
                     resendVerification.style.display = 'block';
                     errorMessage.style.display = 'none';
+                    loginButton.disabled = false;
+                    loginButton.querySelector('.button-text').style.display = 'inline';
+                    loginButton.querySelector('.button-loader').style.display = 'none';
                 } else {
+                    // Show the error for now
                     errorMessage.textContent = errorText;
                     errorMessage.style.display = 'block';
                     resendVerification.style.display = 'none';
+                    loginButton.disabled = false;
+                    loginButton.querySelector('.button-text').style.display = 'inline';
+                    loginButton.querySelector('.button-loader').style.display = 'none';
                 }
-
-                // Reset button state
-                loginButton.disabled = false;
-                loginButton.querySelector('.button-text').style.display = 'inline';
-                loginButton.querySelector('.button-loader').style.display = 'none';
             }
         });
 
