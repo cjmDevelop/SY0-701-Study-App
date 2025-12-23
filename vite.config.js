@@ -14,6 +14,7 @@ export default defineConfig({
                 login: resolve(__dirname, 'login.html'),
                 signup: resolve(__dirname, 'signup.html'),
                 profile: resolve(__dirname, 'profile.html'),
+                'delete-account': resolve(__dirname, 'delete-account.html'),
                 'verify-email': resolve(__dirname, 'verify-email.html'),
                 'forgot-password': resolve(__dirname, 'forgot-password.html'),
                 'reset-password': resolve(__dirname, 'reset-password.html'),
