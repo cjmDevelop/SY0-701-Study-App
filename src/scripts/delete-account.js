@@ -33,9 +33,6 @@ const deleteForm = document.getElementById('delete-form');
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🔍 Delete account page loaded');
 
-    // Update auth UI first
-    updateAuthUI();
-
     // Check if user is authenticated
     if (!authService.isAuthenticated()) {
         console.log('❌ User not logged in, redirecting...');
@@ -60,40 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
     showStep(1);
 });
-
-// Update Auth UI
-function updateAuthUI() {
-    const userStatus = document.getElementById('user-status');
-    const logoutBtn = document.getElementById('logout-btn');
-
-    if (!userStatus) return;
-
-    if (authService.isAuthenticated()) {
-        const user = authService.getUser();
-
-        let displayName;
-        if (user?.firstName && user?.lastName) {
-            displayName = `${user.firstName} ${user.lastName}`;
-        } else if (user?.firstName) {
-            displayName = user.firstName;
-        } else {
-            displayName = user?.email || 'User';
-        }
-
-        userStatus.textContent = `Hi ${displayName}`;
-        userStatus.classList.add('logged-in');
-
-        if (logoutBtn) {
-            logoutBtn.style.display = 'inline-block';
-            logoutBtn.addEventListener('click', () => {
-                if (confirm('Are you sure you want to logout?')) {
-                    authService.logout();
-                    window.location.href = 'index.html';
-                }
-            });
-        }
-    }
-}
 
 // Event Listeners
 function initializeEventListeners() {

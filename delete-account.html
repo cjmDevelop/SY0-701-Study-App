@@ -9,21 +9,20 @@
   <link rel="stylesheet" href="src/styles/delete-account.css" />
 </head>
 <body>
-  <!-- Auth Status Bar -->
-  <div class="auth-status-bar">
-    <span id="user-status"></span>
-    <div class="auth-links">
-      <a href="index.html" class="auth-link">← Back to App</a>
-      <button id="logout-btn" class="auth-link logout-btn" style="display: none;">Logout</button>
+  <header>
+    <div class="logo-container" style="display: flex; flex-direction: column; align-items: flex-start;">
+      <a href="index.html" class="logo" style="line-height: 1; margin-bottom: 5px;">SecPlus Prep</a>
+      <span class="logo-tagline" style="font-size: 0.65rem; color: #4ecdc4; font-weight: 500; line-height: 1;">Free Study Tool for Security+ SY0-701</span>
     </div>
-  </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="quiz-menu.html">Quiz Menu</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
 
-  <main class="container">
-    <div class="banner">
-      <h4 style="color: #ff5555; text-shadow: #ff5555 1px 0 10px;">⚠️ Permanently delete your account and all data</h4>
-    </div>
-
-    <div class="auth-card-wrapper">
+  <main>
+    <div class="auth-container delete-account-container">
 
       <!-- Step 1: Warning & Confirmation -->
       <div id="step-1" class="delete-step-container active" data-step="1">
@@ -115,6 +114,19 @@
 
     </div>
   </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <span class="separator">|</span>
+        <a href="https://github.com/cjmDevelop/CyberSecurity-QuizApp-SY0-701" target="_blank">GitHub</a>
+        <span class="separator">|</span>
+        <a href="https://ko-fi.com/joe364671" target="_blank" class="donate-link">Donate</a>
+      </div>
+      <p class="footer-text">Made with passion for cybersecurity education</p>
+    </div>
+  </footer>
 
   <script type="module" src="src/scripts/delete-account.js"></script>
 </body>

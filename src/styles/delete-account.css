@@ -1,16 +1,20 @@
-/* delete-account.css */
+/* delete-account.css - Adapted for SecPlus Prep */
+
+/* Delete Account Container */
+.delete-account-container {
+    max-width: 700px;
+}
 
 /* Step Container Management */
 .delete-step-container {
     display: none;
     animation: fadeIn 0.3s ease-in;
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
-    background: #111;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 40px 30px;
-    border: 2px solid #333;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Active step is visible */
@@ -31,17 +35,18 @@
 
 /* Delete Page Titles */
 .delete-title {
-    color: #ff5555;
-    text-shadow: #ff5555 1px 0 10px;
+    color: #c62828;
     text-align: center;
     margin-bottom: 30px;
-    font-size: 28px;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 /* Delete Info Text */
 .delete-info {
     text-align: center;
-    color: #ddd;
+    color: #555;
     margin-bottom: 30px;
     font-size: 16px;
     line-height: 1.6;
@@ -49,22 +54,22 @@
 
 /* Warning Box */
 .warning-box {
-    background: rgba(255, 85, 85, 0.1);
-    border: 2px solid #ff5555;
+    background: rgba(198, 40, 40, 0.1);
+    border: 2px solid #c62828;
     border-radius: 10px;
     padding: 25px;
     margin: 25px 0;
 }
 
 .warning-box h3 {
-    color: #ff5555;
+    color: #c62828;
     margin: 0 0 15px 0;
-    font-size: 20px;
-    text-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .warning-box p {
-    color: #ddd;
+    color: #333;
     margin: 10px 0;
     line-height: 1.6;
 }
@@ -76,25 +81,26 @@
 }
 
 .warning-box li {
-    color: #ff5555;
+    color: #c62828;
     padding: 8px 0;
     font-size: 16px;
+    font-weight: 600;
 }
 
 .warning-box strong {
-    color: #ff5555;
+    color: #c62828;
     font-size: 18px;
 }
 
 /* Info Box */
 .info-box {
-    background: rgba(255, 193, 7, 0.1);
-    border: 2px solid #ffc107;
-    border-left: 5px solid #ffc107;
+    background: rgba(255, 152, 0, 0.1);
+    border: 2px solid #ff9800;
+    border-left: 5px solid #ff9800;
     border-radius: 8px;
     padding: 20px;
     margin: 25px 0;
-    color: #ffc107;
+    color: #e65100;
 }
 
 .info-box p {
@@ -103,7 +109,7 @@
 }
 
 .info-box strong {
-    color: #ffc107;
+    color: #e65100;
 }
 
 /* Delete Input Fields */
@@ -114,22 +120,21 @@
 
 .delete-input label {
     display: block;
-    color: #ff5555;
+    color: #c62828;
     margin-bottom: 8px;
-    font-weight: 600;
-    text-shadow: #ff5555 1px 0 10px;
+    font-weight: 700;
 }
 
 .delete-input input,
 .delete-input textarea {
     width: 100%;
     padding: 12px;
-    background: #222;
-    border: 2px solid #444;
+    background: #f5f5f5;
+    border: 2px solid #ddd;
     border-radius: 8px;
-    color: white;
+    color: #333;
     font-size: 16px;
-    font-family: inherit;
+    font-family: 'Orbitron', monospace;
     transition: border-color 0.3s;
     box-sizing: border-box;
 }
@@ -137,7 +142,7 @@
 .delete-input input:focus,
 .delete-input textarea:focus {
     outline: none;
-    border-color: #ff5555;
+    border-color: #c62828;
 }
 
 .delete-input textarea {
@@ -154,7 +159,7 @@
 .btn-danger {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #ff5555 0%, #cc0000 100%);
+    background: linear-gradient(135deg, #c62828 0%, #8e0000 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -163,14 +168,16 @@
     cursor: pointer;
     transition: all 0.3s;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(255, 85, 85, 0.5);
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(198, 40, 40, 0.4);
     margin-bottom: 10px;
+    font-family: 'Orbitron', monospace;
 }
 
 .btn-danger:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(255, 85, 85, 0.8);
-    background: linear-gradient(135deg, #ff3333 0%, #aa0000 100%);
+    box-shadow: 0 6px 20px rgba(198, 40, 40, 0.6);
+    background: linear-gradient(135deg, #d32f2f 0%, #9e0000 100%);
 }
 
 .btn-danger:active:not(:disabled) {
@@ -189,17 +196,18 @@
     padding: 12px;
     background: transparent;
     border: 2px solid #666;
-    color: #ddd;
+    color: #333;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
+    font-family: 'Orbitron', monospace;
 }
 
 .btn-secondary:hover:not(:disabled) {
-    background: #333;
-    border-color: #999;
+    background: #666;
+    border-color: #666;
     color: white;
 }
 
@@ -226,14 +234,14 @@
 
 .delete-message-container.success {
     background: rgba(76, 175, 80, 0.2);
-    color: #4CAF50;
+    color: #2e7d32;
     border: 2px solid #4CAF50;
 }
 
 .delete-message-container.error {
-    background: rgba(255, 85, 85, 0.2);
-    color: #ff5555;
-    border: 2px solid #ff5555;
+    background: rgba(198, 40, 40, 0.2);
+    color: #c62828;
+    border: 2px solid #c62828;
 }
 
 /* Success Message */
@@ -245,14 +253,14 @@
 .goodbye-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #ff5555 0%, #cc0000 100%);
+    background: linear-gradient(135deg, #c62828 0%, #8e0000 100%);
     color: white;
     font-size: 48px;
     line-height: 80px;
     border-radius: 50%;
     margin: 0 auto 20px;
     animation: scaleIn 0.5s ease;
-    box-shadow: 0 0 20px rgba(255, 85, 85, 0.5);
+    box-shadow: 0 4px 20px rgba(198, 40, 40, 0.5);
 }
 
 @keyframes scaleIn {
@@ -265,13 +273,14 @@
 }
 
 .delete-success-title {
-    color: #ff5555;
+    color: #c62828;
     margin: 20px 0 10px 0;
-    font-size: 28px;
+    font-size: 2rem;
+    font-weight: 900;
 }
 
 .delete-success-text {
-    color: #ddd;
+    color: #555;
     font-size: 16px;
     margin-bottom: 20px;
     line-height: 1.6;
@@ -287,8 +296,8 @@
     display: inline-block;
     text-decoration: none;
     padding: 14px 40px;
-    background: linear-gradient(135deg, yellow 0%, #ffd700 100%);
-    color: black;
+    background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+    color: white;
     border: none;
     border-radius: 8px;
     font-size: 18px;
@@ -296,12 +305,14 @@
     cursor: pointer;
     transition: all 0.3s;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(74, 0, 224, 0.4);
+    font-family: 'Orbitron', monospace;
 }
 
 .delete-success-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(255, 255, 0, 0.8);
+    box-shadow: 0 6px 20px rgba(74, 0, 224, 0.6);
 }
 
 /* Loading State */
@@ -331,62 +342,10 @@
     to { transform: rotate(360deg); }
 }
 
-/* Auth Status Bar */
-.auth-status-bar {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #333;
-}
-
-#user-status {
-    color: #4ecdc4;
-    font-weight: 600;
-}
-
-.auth-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.auth-link {
-    color: #4ecdc4;
-    text-decoration: none;
-    transition: color 0.3s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-family: inherit;
-}
-
-.auth-link:hover {
-    color: #fff;
-}
-
-.container {
-    padding: 2rem;
-    min-height: calc(100vh - 60px);
-}
-
-.banner {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.auth-card-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Responsive Design */
 @media (max-width: 600px) {
     .delete-step-container {
-        width: 95%;
-        padding: 30px 20px;
+        padding: 2rem 1.5rem;
     }
 
     .warning-box,
@@ -396,7 +355,7 @@
     }
 
     .warning-box h3 {
-        font-size: 18px;
+        font-size: 1.1rem;
     }
 
     .warning-box li {
@@ -411,10 +370,10 @@
     }
 
     .delete-title {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     .delete-success-title {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 }
