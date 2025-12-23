@@ -66,13 +66,10 @@
                         Logout
                     </button>
 
-                    <button id="deleteAccountButton" class="auth-button" style="background: #c62828;">
+                    <button onclick="window.location.href='delete-account.html'" class="auth-button" style="background: #c62828;">
                         Delete Account
                     </button>
                 </div>
-
-                <div id="errorMessage" class="error-message" style="display: none; margin-top: 1rem;"></div>
-                <div id="successMessage" class="success-message" style="display: none; margin-top: 1rem;"></div>
             </div>
         </div>
     </main>
@@ -119,45 +116,10 @@
             statusElement.innerHTML = '<span style="color: #f57c00;">⚠ Email not verified</span>';
         }
 
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-
         // Handle logout
         document.getElementById('logoutButton').addEventListener('click', () => {
             authService.logout();
             window.location.href = 'index.html';
-        });
-
-        // Handle delete account
-        document.getElementById('deleteAccountButton').addEventListener('click', async () => {
-            const confirmed = confirm(
-                'Are you sure you want to delete your account? This action cannot be undone.\n\n' +
-                'All your quiz progress and data will be permanently deleted.'
-            );
-
-            if (!confirmed) return;
-
-            const password = prompt('Please enter your password to confirm account deletion:');
-
-            if (!password) return;
-
-            try {
-                errorMessage.style.display = 'none';
-                successMessage.style.display = 'none';
-
-                await authService.deleteAccount(user.email, password);
-
-                successMessage.textContent = 'Account deleted successfully. Redirecting...';
-                successMessage.style.display = 'block';
-
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 2000);
-
-            } catch (error) {
-                errorMessage.textContent = error.message || 'Failed to delete account. Please try again.';
-                errorMessage.style.display = 'block';
-            }
         });
     </script>
 </body>

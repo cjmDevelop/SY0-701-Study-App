@@ -342,7 +342,7 @@ class AuthService {
     /**
      * Delete account
      */
-    async deleteAccount(email, password) {
+    async deleteAccount(email, password, reason = null) {
         try {
             const accessToken = localStorage.getItem('accessToken');
             const response = await fetch(`${API_BASE_URL}/account`, {
@@ -351,7 +351,11 @@ class AuthService {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${accessToken}`,
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({
+                    email,
+                    password,
+                    reason: reason || null
+                }),
             });
 
             const data = await response.json();

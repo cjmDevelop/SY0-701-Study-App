@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account - SecPlus Prep</title>
+  <link rel="icon" href="public/quiz_24dp_75FB4C_FILL0_wght400_GRAD0_opsz24.png">
+  <link rel="stylesheet" href="src/styles/auth.css" />
+  <link rel="stylesheet" href="src/styles/delete-account.css" />
+</head>
+<body>
+  <!-- Auth Status Bar -->
+  <div class="auth-status-bar">
+    <span id="user-status"></span>
+    <div class="auth-links">
+      <a href="index.html" class="auth-link">← Back to App</a>
+      <button id="logout-btn" class="auth-link logout-btn" style="display: none;">Logout</button>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="banner">
+      <h4 style="color: #ff5555; text-shadow: #ff5555 1px 0 10px;">⚠️ Permanently delete your account and all data</h4>
+    </div>
+
+    <div class="auth-card-wrapper">
+
+      <!-- Step 1: Warning & Confirmation -->
+      <div id="step-1" class="delete-step-container active" data-step="1">
+        <h1 class="delete-title">🗑️ Delete Account</h1>
+
+        <div class="warning-box">
+          <h3>⚠️ This action cannot be undone!</h3>
+          <p>Deleting your account will permanently remove:</p>
+          <ul>
+            <li>✗ All your quiz progress and scores</li>
+            <li>✗ Your account information</li>
+            <li>✗ All verification tokens</li>
+            <li>✗ All password reset tokens</li>
+          </ul>
+          <p><strong>You will not be able to recover this data.</strong></p>
+        </div>
+
+        <div class="info-box">
+          <p><strong>💡 Alternative:</strong> If you just want to take a break, you can simply logout instead of deleting your account.</p>
+        </div>
+
+        <section class="delete-buttons">
+          <button type="button" id="continue-btn" class="btn-danger">
+            I Understand, Continue →
+          </button>
+          <button type="button" id="cancel-btn" class="btn-secondary">
+            Cancel
+          </button>
+        </section>
+      </div>
+
+      <!-- Step 2: Password Confirmation -->
+      <form id="delete-form" class="delete-step-container" data-step="2">
+        <h1 class="delete-title">🔐 Confirm Deletion</h1>
+
+        <p class="delete-info">
+          Enter your password to confirm account deletion
+        </p>
+
+        <section class="delete-input">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          />
+        </section>
+
+        <section class="delete-input">
+          <label for="reason">Reason for leaving (optional)</label>
+          <textarea
+            id="reason"
+            placeholder="Help us improve by telling us why you're leaving..."
+            rows="4"
+          ></textarea>
+        </section>
+
+        <div id="message" class="delete-message-container"></div>
+
+        <section class="delete-buttons">
+          <button type="submit" id="delete-btn" class="btn-danger">
+            Delete My Account Forever
+          </button>
+          <button type="button" id="back-btn" class="btn-secondary">
+            ← Go Back
+          </button>
+        </section>
+      </form>
+
+      <!-- Step 3: Success -->
+      <div id="step-3" class="delete-step-container" data-step="3">
+        <div class="delete-success-message">
+          <div class="goodbye-icon">👋</div>
+          <h1 class="delete-success-title">Account Deleted</h1>
+          <p class="delete-success-text">
+            Your account has been permanently deleted.<br>
+            We're sorry to see you go!
+          </p>
+          <p class="delete-success-subtext">
+            You'll receive a confirmation email shortly.
+          </p>
+          <a href="index.html" class="delete-success-btn">
+            Return to Homepage
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="src/scripts/delete-account.js"></script>
+</body>
+</html>
