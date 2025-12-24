@@ -61,6 +61,7 @@ let resultContainer;
 let submitButton;
 let retryButton;
 let showAnswerButton;
+let backToMenuButton;
 let backArrowButton;
 let skipArrowButton;
 let popupA;
@@ -307,6 +308,7 @@ function displayResult() {
   submitButton.style.display = 'none';
   retryButton.style.display = 'inline-block';
   showAnswerButton.style.display = incorrectAnswersAnswered > 0 ? 'inline-block' : 'none';
+  backToMenuButton.style.display = 'inline-block';
   backArrowButton.style.visibility = 'hidden';
   skipArrowButton.style.visibility = 'hidden';
 
@@ -347,6 +349,7 @@ function retryQuiz() {
   submitButton.style.display = 'inline-block';
   retryButton.style.display = 'none';
   showAnswerButton.style.display = 'none';
+  backToMenuButton.style.display = 'none';
   skipArrowButton.style.visibility = 'visible';
   resultContainer.innerHTML = '';
 
@@ -359,6 +362,7 @@ function showAnswer() {
   submitButton.style.display = 'none';
   retryButton.style.display = 'inline-block';
   showAnswerButton.style.display = 'none';
+  backToMenuButton.style.display = 'inline-block';
 
   let incorrectAnswersHtml = '<div class="review-block">';
   for (let i = 0; i < incorrectAnswers.length; i++) {
@@ -374,6 +378,24 @@ function showAnswer() {
   }
   incorrectAnswersHtml += '</div>';
   resultContainer.innerHTML = incorrectAnswersHtml;
+}
+
+function backToQuizMenu() {
+  // Extract the domain number (first character) to determine which sub-menu to navigate to
+  const domainNumber = domain.charAt(0);
+
+  // Map domain number to the appropriate sub-menu page
+  const subMenuMap = {
+    '1': 'sub-menu.html',
+    '2': 'sub-menu-2.html',
+    '3': 'sub-menu-3.html',
+    '4': 'sub-menu-4.html',
+    '5': 'sub-menu-5.html'
+  };
+
+  // Navigate to the appropriate sub-menu page
+  const targetPage = subMenuMap[domainNumber] || 'quiz-menu.html'; // Fallback to main menu if domain not found
+  window.location.href = targetPage;
 }
 
 function goBack() {
@@ -404,6 +426,7 @@ function initQuiz() {
   submitButton = document.getElementById('submit');
   retryButton = document.getElementById('retry');
   showAnswerButton = document.getElementById('showAnswer');
+  backToMenuButton = document.getElementById('backToMenu');
   backArrowButton = document.getElementById('back-arrow');
   skipArrowButton = document.getElementById('skip-arrow');
   popupA = document.getElementById('popup-a');
@@ -411,10 +434,11 @@ function initQuiz() {
   skipWarning = document.getElementById('skip-warning');
 
   // Event listeners - Only add if elements exist (quiz page only)
-  if (submitButton && retryButton && showAnswerButton && backArrowButton && skipArrowButton) {
+  if (submitButton && retryButton && showAnswerButton && backToMenuButton && backArrowButton && skipArrowButton) {
     submitButton.addEventListener('click', checkAnswer);
     retryButton.addEventListener('click', retryQuiz);
     showAnswerButton.addEventListener('click', showAnswer);
+    backToMenuButton.addEventListener('click', backToQuizMenu);
     backArrowButton.addEventListener('click', goBack);
     skipArrowButton.addEventListener('click', skipQuestion);
 
