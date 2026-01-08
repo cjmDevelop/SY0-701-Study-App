@@ -162,7 +162,7 @@ function handleTimeExpired() {
   alert("⏰ TIME'S UP! Your quiz will be submitted automatically.");
 
   // Auto-submit quiz (mark unanswered as wrong)
-  showResult();
+  displayResult();
 }
 
 function loadQuiz() {

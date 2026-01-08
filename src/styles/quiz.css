@@ -428,6 +428,41 @@ footer {
     color: #999;
 }
 
+/* Review Block Styles */
+.review-block {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.review-question {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.review-question:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.review-question p {
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.review-question strong {
+    font-size: 1.1rem;
+}
+
 /* Footer Mobile Styles */
 @media (max-width: 768px) {
     .footer-links {
@@ -437,5 +472,18 @@ footer {
 
     .separator {
         display: none;
+    }
+
+    .review-block {
+        padding: 10px;
+        max-height: 60vh;
+    }
+
+    .review-question {
+        padding: 15px;
+    }
+
+    .review-question p {
+        font-size: 0.9rem;
     }
 }
